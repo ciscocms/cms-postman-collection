@@ -68,6 +68,9 @@ The folder structure and order of requests are following the CMS API guide.
 
 ## Credits
 
-This collection was originally created by @flynnibus for CMS 2.2.
+This collection was originally created by Steve Kapinos for CMS 2.0
 
-Reorganized, cleaned up, expanded with more recent API changes, documented and published by @zoltan-k. 
+Reorganized, cleaned up, expanded with more recent API changes, documented and published by Zoltán Kelemen. 
+
+
+© 2019 Cisco Systems, Inc. All rights reserved.
