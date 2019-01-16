@@ -1,0 +1,29 @@
+v2.4.beta
+
+look for latest version on https://github.com/ciscocms/cms-postman-collection
+
+## January, 2019
+* Published on github
+* started working on completion of all request parameters and complete 2.4+ compatibility (2.5 API is identical to 2.4)
+
+## Apr24, 2018
+* 210 requests
+* added all remaining requests and nodes as per current CMS 2.3 API guide (24 April 2018 version)
+* TODO:
+  * verify/complete query attribute lists
+  * check if all requests work (some requests implied, but not present in API guide)
+
+## Apr11, 2018
+* 167 requests
+* Added some more DEL queries
+
+## Apr06, 2018
+* Added Retrieve queries (GET for individual IDs) for all relevant nodes.
+* Added DEL queries for chapters 6 and 7
+
+## Apr05, 2018
+* reorganized by CMS API Guide chapters, work in progress to update to 2.3.2
+* global auth added (every request inherits it)
+
+## Feb19, 2017
+* Updated for CMS 2.1
