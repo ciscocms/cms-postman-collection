@@ -5,6 +5,8 @@ look for latest version on https://github.com/ciscocms/cms-postman-collection
 ## January, 2019
 * Published on github
 * started working on completion of all request parameters and complete 2.4+ compatibility (2.5 API is identical to 2.4)
+* included all GET query parameters
+* added additional subfolders for better organization
 
 ## Apr24, 2018
 * 210 requests
