@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7485d80d-53f8-43f2-b2bb-9102961a3e35",
+		"_postman_id": "696f730e-4865-402d-9a09-abe4d2761af7",
 		"name": "CMS API collection",
 		"description": "Cisco Meeting Server API collection, organized according to CMS API Guide structure.\nSee https://github.com/ciscocms/cms-postman-collection for instructions on how to use this collection.\n\nFurther details: \nhttps://www.cisco.com/c/en/us/support/conferencing/meeting-server/products-programming-reference-guides-list.html\nhttps://developer.cisco.com/site/cisco-meeting-server/\n\n---\n\n## Authors: Steve Kapinos, Zoltan Kelemen\n\nlook for latest version on https://github.com/ciscocms/cms-postman-collection\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -10,1500 +10,1537 @@
 			"name": "coSpace Related Methods",
 			"item": [
 				{
-					"name": "List CoSpaces",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+					"name": "coSpaces",
+					"item": [
+						{
+							"name": "List CoSpaces",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve coSpaces other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "tenantFilter",
+											"value": "{{tenantID}}",
+											"description": "Supply tenantFilter=<tenant id> to return just those coSpaces associated with that tenant",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfileFilter",
+											"value": "{{callLegProfileID}}",
+											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
+											"disabled": true
+										}
+									]
+								},
+								"description": "The response includes the total count of the number of coSpaces present which match the filter if provided, irrespective of the number returned within the response. (With no filter, this value is the total number of configured coSpaces.)"
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces"
-							],
-							"query": [
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve coSpaces other than the first \"page\" in the notional list.",
-									"disabled": true
+						{
+							"name": "Creating a CoSpace",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "String",
+											"description": "The human-readable name that will be shown on clients’ UI for this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "uri",
+											"value": "URI user part",
+											"description": "The URI that a SIP system would use to dial in to this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secondaryUri",
+											"value": "URI user part",
+											"description": "The secondary URI for this coSpace – this provide the same functionality as the “uri” parameter, but allows more than one URI to be configured for a coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callId",
+											"value": "String",
+											"description": "The numeric ID that a user would enter at the IVR (or via a web client) to connect to this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "cdrTag",
+											"value": "String",
+											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag“) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "passcode",
+											"value": "String",
+											"description": "The security code for this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "defaultlayout",
+											"value": "allequal",
+											"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "{{tenantID}}",
+											"description": "If provided, associates the specified tenant with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": "{{callLegProfileID}}",
+											"description": "If provided, associates the specified call leg profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": "{{callProfileID}}",
+											"description": "If provided, associates the specified call profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": "{{callBrandingProfileID}}",
+											"description": "If provided, associates the specified call branding profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "requireCallId",
+											"value": "true",
+											"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secret",
+											"value": "String",
+											"description": "If provided, sets the security string for this coSpace. If absent, a security string is chosen automatically if the coSpace has a callId value. This is the security value associated with the coSpace that needs to be supplied with the callId for guest access to the coSpace.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonMemberAccess",
+											"value": "true",
+											"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ownerJid",
+											"value": "String",
+											"description": "Indicates the coSpace is owned by the user with the specified JID. (From version 2.0).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "streamUrl",
+											"value": "URL",
+											"description": "Indicates where the coSpace is streamed to, if streaming is initiated. (From version 2.1).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ownerAdGuid",
+											"value": "{{userAdGUID}}",
+											"description": "If provided, the coSpace will be owned by the user with the given AD GUID. (From version 2.1).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "meetingScheduler",
+											"value": "String",
+											"description": "Name of person (not necessarily a user) who scheduled the creation of this coSpace, which if set is propagated to any call objects as the “ownerName” field. (From version 2.2).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "panePlacementHighestImportance",
+											"value": "Number",
+											"description": "If panePlacementHighestImportance is provided, pane placement will be activated for this coSpace - the active range of importance values will be from “highest importance” down to 1(inclusive). (From version 2.4)",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces"
+									]
 								},
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
-									"disabled": true
+								"description": "Creating: POST method to the “/coSpaces” node. If the coSpace was created successfully,  a “200 OK” response is received, and the “Location” header contains the ID for the new  coSpace"
+							},
+							"response": []
+						},
+						{
+							"name": "Modifying a CoSpace",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "String",
+											"description": "The human-readable name that will be shown on clients’ UI for this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "uri",
+											"value": "URI user part",
+											"description": "The URI that a SIP system would use to dial in to this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secondaryUri",
+											"value": "URI user part",
+											"description": "The secondary URI for this coSpace – this provide the same functionality as the “uri” parameter, but allows more than one URI to be configured for a coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callId",
+											"value": "String",
+											"description": "The numeric ID that a user would enter at the IVR (or via a web client) to connect to this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "cdrTag",
+											"value": "String",
+											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag“) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "defaultlayout",
+											"value": "allequal",
+											"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "{{tenantID}}",
+											"description": "If provided, associates the specified tenant with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": "{{callLegProfileID}}",
+											"description": "If provided, associates the specified call leg profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": "{{callProfileID}}",
+											"description": "If provided, associates the specified call profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": "{{callBrandingProfileID}}",
+											"description": "If provided, associates the specified call branding profile with this coSpace",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "requireCallId",
+											"value": "true",
+											"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secret",
+											"value": "String",
+											"description": "If provided, sets the security string for this coSpace. If absent, a security string is chosen automatically if the coSpace has a callId value. This is the security value associated with the coSpace that needs to be supplied with the callId for guest access to the coSpace.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "regenerateSecret",
+											"value": "true",
+											"description": "* If provided as true - a new security value is generated for this coSpace and the former value is no longer valid (for instance, any hyperlinks including it will cease to work) * l If provided as false - do not generate a new secret value for this coSpace; this has no effect This parameter is only valid for the modify (PUT) case.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonMemberAccess",
+											"value": "true",
+											"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ownerJid",
+											"value": "String",
+											"description": "Indicates the coSpace is owned by the user with the specified JID. (From version 2.0).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "streamUrl",
+											"value": "URL",
+											"description": "Indicates where the coSpace is streamed to, if streaming is initiated. (From version 2.1).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ownerAdGuid",
+											"value": "{{userAdGUID}}",
+											"description": "If provided, the coSpace will be owned by the user with the given AD GUID. (From version 2.1).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "meetingScheduler",
+											"value": "String",
+											"description": "Name of person (not necessarily a user) who scheduled the creation of this coSpace, which if set is propagated to any call objects as the “ownerName” field. (From version 2.2).",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "panePlacementHighestImportance",
+											"value": "Number",
+											"description": "If panePlacementHighestImportance is provided, pane placement will be activated for this coSpace - the active range of importance values will be from “highest importance” down to 1(inclusive). (From version 2.4)",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "tenantFilter",
-									"value": "{{tenantID}}",
-									"description": "Supply tenantFilter=<tenant id> to return just those coSpaces associated with that tenant",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}"
+									]
 								},
-								{
-									"key": "callLegProfileFilter",
-									"value": "{{callLegProfileID}}",
-									"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
-									"disabled": true
+								"description": "Modifying: PUT method on a “/coSpaces/<coSpace ID>” node"
+							},
+							"response": []
+						},
+						{
+							"name": "Remove coSpace",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"description": "The response includes the total count of the number of coSpaces present which match the filter if provided, irrespective of the number returned within the response. (With no filter, this value is the total number of configured coSpaces.)"
-					},
-					"response": []
-				},
-				{
-					"name": "Creating a CoSpace",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "String",
-									"description": "The human-readable name that will be shown on clients’ UI for this coSpace",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Retrieve coSpace details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "uri",
-									"value": "URI user part",
-									"description": "The URI that a SIP system would use to dial in to this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secondaryUri",
-									"value": "URI user part",
-									"description": "The secondary URI for this coSpace – this provide the same functionality as the \"uri\" parameter, but allows more than one URI to be configured for a coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callId",
-									"value": "String",
-									"description": "The numeric ID that a user would enter at the IVR (or via a web client) to connect to this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "cdrTag",
-									"value": "String",
-									"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a \"callStart\" CDR is generated for a call associated with this coSpace, this tag will be written (as \"cdrTag\") to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "passcode",
-									"value": "String",
-									"description": "The security code for this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "defaultlayout",
-									"value": "allequal",
-									"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "{{tenantID}}",
-									"description": "If provided, associates the specified tenant with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": "{{callLegProfileID}}",
-									"description": "If provided, associates the specified call leg profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": "{{callProfileID}}",
-									"description": "If provided, associates the specified call profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": "{{callBrandingProfileID}}",
-									"description": "If provided, associates the specified call branding profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "requireCallId",
-									"value": "true",
-									"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secret",
-									"value": "String",
-									"description": "If provided, sets the security string for this coSpace. If absent, a security string is chosen automatically if the coSpace has a callId value. This is the security value associated with the coSpace that needs to be supplied with the callId for guest access to the coSpace.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "nonMemberAccess",
-									"value": "true",
-									"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ownerJid",
-									"value": "String",
-									"description": "Indicates the coSpace is owned by the user with the specified JID. (From version 2.0).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "streamUrl",
-									"value": "URL",
-									"description": "Indicates where the coSpace is streamed to, if streaming is initiated. (From version 2.1).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ownerAdGuid",
-									"value": "{{userAdGUID}}",
-									"description": "If provided, the coSpace will be owned by the user with the given AD GUID. (From version 2.1).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "meetingScheduler",
-									"value": "String",
-									"description": "Name of person (not necessarily a user) who scheduled the creation of this coSpace, which if set is propagated to any call objects as the \"ownerName\" field. (From version 2.2).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "panePlacementHighestImportance",
-									"value": "Number",
-									"description": "If panePlacementHighestImportance is provided, pane placement will be activated for this coSpace - the active range of importance values will be from \"highest importance\" down to 1(inclusive). (From version 2.4)",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces"
-							]
-						},
-						"description": "Creating: POST method to the \"/coSpaces\" node. If the coSpace was created successfully,  a \"200 OK\" response is received, and the \"Location\" header contains the ID for the new  coSpace"
-					},
-					"response": []
+						{
+							"name": "Retrieve coSpace specific entry details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/meetingEntryDetail",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"meetingEntryDetail"
+									]
+								},
+								"description": "From version 2.1, a meetingEntryDetail node is added to allow retrieval of entry details for a specific coSpace meeting. Perform a GET on /coSpaces//meeting EntryDetail. Response values are uri and callId."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Modifying a CoSpace",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "String",
-									"description": "The human-readable name that will be shown on clients’ UI for this coSpace",
-									"type": "text",
-									"disabled": true
+					"name": "coSpace Member Methods",
+					"item": [
+						{
+							"name": "List CoSpace Members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "uri",
-									"value": "URI user part",
-									"description": "The URI that a SIP system would use to dial in to this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secondaryUri",
-									"value": "URI user part",
-									"description": "The secondary URI for this coSpace – this provide the same functionality as the \"uri\" parameter, but allows more than one URI to be configured for a coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callId",
-									"value": "String",
-									"description": "The numeric ID that a user would enter at the IVR (or via a web client) to connect to this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "cdrTag",
-									"value": "String",
-									"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a \"callStart\" CDR is generated for a call associated with this coSpace, this tag will be written (as \"cdrTag\") to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "defaultlayout",
-									"value": "allequal",
-									"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "{{tenantID}}",
-									"description": "If provided, associates the specified tenant with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": "{{callLegProfileID}}",
-									"description": "If provided, associates the specified call leg profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": "{{callProfileID}}",
-									"description": "If provided, associates the specified call profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": "{{callBrandingProfileID}}",
-									"description": "If provided, associates the specified call branding profile with this coSpace",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "requireCallId",
-									"value": "true",
-									"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secret",
-									"value": "String",
-									"description": "If provided, sets the security string for this coSpace. If absent, a security string is chosen automatically if the coSpace has a callId value. This is the security value associated with the coSpace that needs to be supplied with the callId for guest access to the coSpace.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "regenerateSecret",
-									"value": "true",
-									"description": "* If provided as true - a new security value is generated for this coSpace and the former value is no longer valid (for instance, any hyperlinks including it will cease to work) * l If provided as false - do not generate a new secret value for this coSpace; this has no effect This parameter is only valid for the modify (PUT) case.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "nonMemberAccess",
-									"value": "true",
-									"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ownerJid",
-									"value": "String",
-									"description": "Indicates the coSpace is owned by the user with the specified JID. (From version 2.0).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "streamUrl",
-									"value": "URL",
-									"description": "Indicates where the coSpace is streamed to, if streaming is initiated. (From version 2.1).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ownerAdGuid",
-									"value": "{{userAdGUID}}",
-									"description": "If provided, the coSpace will be owned by the user with the given AD GUID. (From version 2.1).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "meetingScheduler",
-									"value": "String",
-									"description": "Name of person (not necessarily a user) who scheduled the creation of this coSpace, which if set is propagated to any call objects as the \"ownerName\" field. (From version 2.2).",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "panePlacementHighestImportance",
-									"value": "Number",
-									"description": "If panePlacementHighestImportance is provided, pane placement will be activated for this coSpace - the active range of importance values will be from \"highest importance\" down to 1(inclusive). (From version 2.4)",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"coSpaceUsers"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those coSpaceUsers that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve coSpaceUsers other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfileFilter",
+											"value": "{{callLegProfileID}}",
+											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaceUsers using that call leg profile",
+											"disabled": true
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}"
-							]
-						},
-						"description": "Modifying: PUT method on a “/coSpaces/<coSpace ID>” node"
-					},
-					"response": []
-				},
-				{
-					"name": "Remove coSpace",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve coSpace details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve coSpace specific entry details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/meetingEntryDetail",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"meetingEntryDetail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List CoSpace Members",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"coSpaceUsers"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those coSpaceUsers that match the filter",
-									"disabled": true
+						{
+							"name": "Add coSpace Member",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userJid",
+											"value": "String",
+											"description": "JID of the user to be added as a member. required",
+											"type": "text"
+										},
+										{
+											"key": "callLegProfile",
+											"value": "{{callLegProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canDestroy",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canAddRemoveMember",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeName",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeURI",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeCallId",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangePasscode",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canPostMessage",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canRemoveSelf",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canDeleteAllMessages",
+											"value": "false",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeNonMemberAccessAllowed",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve coSpaceUsers other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfileFilter",
-									"value": "{{callLegProfileID}}",
-									"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaceUsers using that call leg profile",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"coSpaceUsers"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add coSpace Member",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "userJid",
-									"value": "String",
-									"description": "JID of the user to be added as a member. required",
-									"type": "text"
+							},
+							"response": []
+						},
+						{
+							"name": "Modify CoSpace Member",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userJid",
+											"value": "user0001@demo.org",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canDestroy",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canAddRemoveMember",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeName",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeURI",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangeCallId",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canChangePasscode",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canPostMessage",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canRemoveSelf",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canDeleteAllMessages",
+											"value": "True",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "callLegProfile",
-									"value": "{{callLegProfileID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canDestroy",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canAddRemoveMember",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeName",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeURI",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeCallId",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangePasscode",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canPostMessage",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canRemoveSelf",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canDeleteAllMessages",
-									"value": "false",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeNonMemberAccessAllowed",
-									"value": "true",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"coSpaceUsers",
+										"{{userID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"coSpaceUsers"
-							]
+						{
+							"name": "Remove CoSpace Member",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"coSpaceUsers",
+										"{{userID}}"
+									]
+								},
+								"description": "GET method performed on a “/coSpaces/<coSpace ID>/coSpaceUsers/<coSpaceUser ID>” node. If the retrieval is valid, a “200 OK” response is received, with containing a single <coSpaceUser id=<ID>> object with data as described above for the creating and modifying case. In addition    * the autoGenerated value shows whether the coSpace member was added to the coSpace automatically as part of an LDAP sync operation  * the canDeleteAllMessages shows whether this member is allowed to delete chat in the coSpace"
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve CoSpace Member details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"coSpaceUsers",
+										"{{userID}}"
+									]
+								},
+								"description": "GET method performed on a “/coSpaces/<coSpace ID>/coSpaceUsers/<coSpaceUser ID>” node. If the retrieval is valid, a “200 OK” response is received, with containing a single <coSpaceUser id=<ID>> object with data as described above for the creating and modifying case. In addition    * the autoGenerated value shows whether the coSpace member was added to the coSpace automatically as part of an LDAP sync operation  * the canDeleteAllMessages shows whether this member is allowed to delete chat in the coSpace"
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Modify CoSpace Member",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "userJid",
-									"value": "user0001@demo.org",
-									"type": "text",
-									"disabled": true
+					"name": "coSpace Chat/Message Board Methods",
+					"item": [
+						{
+							"name": "posting to the message board of a coSpace",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "message",
+											"value": "Hello World",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "Name",
+											"type": "text"
+										}
+									]
 								},
-								{
-									"key": "callLegProfile",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canDestroy",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canAddRemoveMember",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeName",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeURI",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangeCallId",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canChangePasscode",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canPostMessage",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canRemoveSelf",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canDeleteAllMessages",
-									"value": "True",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/messages",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"messages"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"coSpaceUsers",
-								"{{userID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove CoSpace Member",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"coSpaceUsers",
-								"{{userID}}"
-							]
-						},
-						"description": "GET method performed on a \"/coSpaces/<coSpace ID>/coSpaceUsers/<coSpaceUser ID>\" node. If the retrieval is valid, a \"200 OK\" response is received, with containing a single <coSpaceUser id=<ID>> object with data as described above for the creating and modifying case. In addition    * the autoGenerated value shows whether the coSpace member was added to the coSpace automatically as part of an LDAP sync operation  * the canDeleteAllMessages shows whether this member is allowed to delete chat in the coSpace"
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve CoSpace Member details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/coSpaceUsers/{{userID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"coSpaceUsers",
-								"{{userID}}"
-							]
-						},
-						"description": "GET method performed on a \"/coSpaces/<coSpace ID>/coSpaceUsers/<coSpaceUser ID>\" node. If the retrieval is valid, a \"200 OK\" response is received, with containing a single <coSpaceUser id=<ID>> object with data as described above for the creating and modifying case. In addition    * the autoGenerated value shows whether the coSpace member was added to the coSpace automatically as part of an LDAP sync operation  * the canDeleteAllMessages shows whether this member is allowed to delete chat in the coSpace"
-					},
-					"response": []
-				},
-				{
-					"name": "posting to the message board of a coSpace",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "message",
-									"value": "Hello World",
-									"type": "text"
+						{
+							"name": "deleting messages from a coSpace message board",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "minAge",
+											"value": "seconds",
+											"description": "If supplied (in the URL) deletes only messages whose age is at least the specified value (in seconds)",
+											"type": "text"
+										},
+										{
+											"key": "maxAge",
+											"value": "seconds",
+											"description": "If supplied specifies (in the URL) an upper limit (in seconds) on the age of messages to be deleted",
+											"type": "text"
+										}
+									]
 								},
-								{
-									"key": "from",
-									"value": "Name",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/messages",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"messages"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/messages",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"messages"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "deleting messages from a coSpace message board",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "minAge",
-									"value": "seconds",
-									"description": "If supplied (in the URL) deletes only messages whose age is at least the specified value (in seconds)",
-									"type": "text"
+					"name": "Multiple coSpace Access Methods",
+					"item": [
+						{
+							"name": "List space accessMethods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "maxAge",
-									"value": "seconds",
-									"description": "If supplied specifies (in the URL) an upper limit (in seconds) on the age of messages to be deleted",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"accessMethods"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those accessMethods that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve accessMethods other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfileFilter",
+											"value": "{{callLegProfileID}}",
+											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
+											"disabled": true
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/messages",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"messages"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List space accessMethods",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"accessMethods"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those accessMethods that match the filter",
-									"disabled": true
+						{
+							"name": "Create accessMethod",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uri",
+											"value": "String (URI user part)",
+											"description": "The URI to be used for dialing in via this access method. (The URI “user part” is the part before any '@' character in a full URI.)",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callId",
+											"value": "Number",
+											"description": "The “call ID” to be used for connecting via this access method (using the IVR or Web Bridge login)",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "passcode",
+											"value": "String",
+											"description": "A passcode required for this access method",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": "{{callLegProfileID}}",
+											"description": "The ID of a call leg profile to apply to calls in via this access method",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secret",
+											"value": "String",
+											"description": "If provided, sets the security string for this coSpace access method. If absent, a security string is chosen automatically if the coSpace access method has a callId value.  This is the security value associated with the coSpace access method that needs to be supplied with the callId for guest access to the coSpace via this access method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "public|private",
+											"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "importance",
+											"value": "Number",
+											"description": "The importance value assigned to all participants joining via this access method. Maximum value is 2,147,483,647. (From version 2.4)",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve accessMethods other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfileFilter",
-									"value": "{{callLegProfileID}}",
-									"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"accessMethods"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create accessMethod",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "uri",
-									"value": "String (URI user part)",
-									"description": "The URI to be used for dialing in via this access method. (The URI \"user part\" is the part before any '@' character in a full URI.)",
-									"type": "text",
-									"disabled": true
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Access Method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uri",
+											"value": "String (URI user part)",
+											"description": "The URI to be used for dialing in via this access method. (The URI “user part” is the part before any '@' character in a full URI.)",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callId",
+											"value": "Number",
+											"description": "The “call ID” to be used for connecting via this access method (using the IVR or Web Bridge login)",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "passcode",
+											"value": "String",
+											"description": "A passcode required for this access method",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": "{{callLegProfileID}}",
+											"description": "The ID of a call leg profile to apply to calls in via this access method",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "secret",
+											"value": "String",
+											"description": "If provided, sets the security string for this coSpace access method. If absent, a security string is chosen automatically if the coSpace access method has a callId value.  This is the security value associated with the coSpace access method that needs to be supplied with the callId for guest access to the coSpace via this access method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "public|private",
+											"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "importance",
+											"value": "Number",
+											"description": "The importance value assigned to all participants joining via this access method. Maximum value is 2,147,483,647. (From version 2.4)",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "regenerateSecret",
+											"value": "true|false",
+											"description": "* If provided as true - a new security value is generated for this coSpace access method and the former value is no longer valid (for instance, any hyperlinks including it will cease to work)\n* If provided as false - do not generate a new secret value for this coSpace access method; this has no effect",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "callId",
-									"value": "Number",
-									"description": "The \"call ID\" to be used for connecting via this access method (using the IVR or Web Bridge login)",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "passcode",
-									"value": "String",
-									"description": "A passcode required for this access method",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": "{{callLegProfileID}}",
-									"description": "The ID of a call leg profile to apply to calls in via this access method",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secret",
-									"value": "String",
-									"description": "If provided, sets the security string for this coSpace access method. If absent, a security string is chosen automatically if the coSpace access method has a callId value.  This is the security value associated with the coSpace access method that needs to be supplied with the callId for guest access to the coSpace via this access method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "public|private",
-									"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "importance",
-									"value": "Number",
-									"description": "The importance value assigned to all participants joining via this access method. Maximum value is 2,147,483,647. (From version 2.4)",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"accessMethods",
+										"{{accessMethodID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"accessMethods"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Access Method",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "uri",
-									"value": "String (URI user part)",
-									"description": "The URI to be used for dialing in via this access method. (The URI \"user part\" is the part before any '@' character in a full URI.)",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Remove Access Method",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "callId",
-									"value": "Number",
-									"description": "The \"call ID\" to be used for connecting via this access method (using the IVR or Web Bridge login)",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "passcode",
-									"value": "String",
-									"description": "A passcode required for this access method",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": "{{callLegProfileID}}",
-									"description": "The ID of a call leg profile to apply to calls in via this access method",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "secret",
-									"value": "String",
-									"description": "If provided, sets the security string for this coSpace access method. If absent, a security string is chosen automatically if the coSpace access method has a callId value.  This is the security value associated with the coSpace access method that needs to be supplied with the callId for guest access to the coSpace via this access method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "public|private",
-									"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "importance",
-									"value": "Number",
-									"description": "The importance value assigned to all participants joining via this access method. Maximum value is 2,147,483,647. (From version 2.4)",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "regenerateSecret",
-									"value": "true|false",
-									"description": "* If provided as true - a new security value is generated for this coSpace access method and the former value is no longer valid (for instance, any hyperlinks including it will cease to work)\n* If provided as false - do not generate a new secret value for this coSpace access method; this has no effect",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"accessMethods",
+										"{{accessMethodID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"accessMethods",
-								"{{accessMethodID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Access Method",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"accessMethods",
-								"{{accessMethodID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Access Method details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"accessMethods",
-								"{{accessMethodID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List coSpace Bulk Parameter sets",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkParameterSets"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create coSpace Bulk Parameter set",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "startIndex",
-									"value": "number",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Retrieve Access Method details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "endIndex",
-									"value": "number",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceUriMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceNameMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceCallIdMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "{{tenantID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": "{{callProfileID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": "{{callBrandingProfileID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "nonMemberAccess",
-									"value": "true",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/accessMethods/{{accessMethodID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"accessMethods",
+										"{{accessMethodID}}"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkParameterSets"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Modify coSpace Bulk Parameter set",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "startIndex",
-									"value": "number",
-									"type": "text",
-									"disabled": true
+					"name": "Bulk creating, updating and deleting coSpaces",
+					"item": [
+						{
+							"name": "List coSpace Bulk Parameter sets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "endIndex",
-									"value": "number",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceUriMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceNameMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "coSpaceCallIdMapping",
-									"value": "String",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "{{tenantID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": "{{callProfileID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": "{{callBrandingProfileID}}",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "nonMemberAccess",
-									"value": "true",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkParameterSets"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkParameterSets",
-								"{{coSpaceBulkParameterSetID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove coSpace Bulk Parameter set",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkParameterSets",
-								"{{coSpaceBulkParameterSetID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve coSpace Bulk Parameter set details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkParameterSets",
-								"{{coSpaceBulkParameterSetID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Bulk sync operations",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkSyncs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Bulk sync operation",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "coSpaceBulkParameterSet",
-									"value": "{{coSpaceBulkParameterSetID}}",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Create coSpace Bulk Parameter set",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "startIndex",
+											"value": "number",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "endIndex",
+											"value": "number",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceUriMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceNameMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceCallIdMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "{{tenantID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": "{{callProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": "{{callBrandingProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonMemberAccess",
+											"value": "true",
+											"type": "text"
+										}
+									]
 								},
-								{
-									"key": "removeAll",
-									"value": "false",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkParameterSets"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkSyncs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Bulk sync operation",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "coSpaceBulkParameterSet",
-									"value": "{{coSpaceBulkParameterSetID}}",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Modify coSpace Bulk Parameter set",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "startIndex",
+											"value": "number",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "endIndex",
+											"value": "number",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceUriMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceNameMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "coSpaceCallIdMapping",
+											"value": "String",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "{{tenantID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": "{{callProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": "{{callBrandingProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "nonMemberAccess",
+											"value": "true",
+											"type": "text"
+										}
+									]
 								},
-								{
-									"key": "removeAll",
-									"value": "false",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkParameterSets",
+										"{{coSpaceBulkParameterSetID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkSyncs",
-								"{{coSpaceBulkSyncID}}"
-							]
+						{
+							"name": "Remove coSpace Bulk Parameter set",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkParameterSets",
+										"{{coSpaceBulkParameterSetID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve coSpace Bulk Parameter set details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkParameterSets/{{coSpaceBulkParameterSetID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkParameterSets",
+										"{{coSpaceBulkParameterSetID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Bulk sync operations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkSyncs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Bulk sync operation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "coSpaceBulkParameterSet",
+											"value": "{{coSpaceBulkParameterSetID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "removeAll",
+											"value": "false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkSyncs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Bulk sync operation",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "coSpaceBulkParameterSet",
+											"value": "{{coSpaceBulkParameterSetID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "removeAll",
+											"value": "false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkSyncs",
+										"{{coSpaceBulkSyncID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Bulk sync operation",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkSyncs",
+										"{{coSpaceBulkSyncID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Bulk sync operation details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaceBulkSyncs",
+										"{{coSpaceBulkSyncID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Remove Bulk sync operation",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkSyncs",
-								"{{coSpaceBulkSyncID}}"
-							]
+					"name": "coSpace Diagnostics Methods",
+					"item": [
+						{
+							"name": "Create CoSpace Diagnostics",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/diagnostics",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"coSpaces",
+										"{{coSpaceID}}",
+										"diagnostics"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Bulk sync operation details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaceBulkSyncs/{{coSpaceBulkSyncID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaceBulkSyncs",
-								"{{coSpaceBulkSyncID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create CoSpace Diagnostics",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/coSpaces/{{coSpaceID}}/diagnostics",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"coSpaces",
-								"{{coSpaceID}}",
-								"diagnostics"
-							]
-						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				}
 			],
 			"event": [
@@ -1533,766 +1570,784 @@
 			"name": "Dial Plan Methods",
 			"item": [
 				{
-					"name": "List Outbound Rules",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"outboundDialPlanRules"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those outboundDialPlanRules that match the filter",
-									"disabled": true
+					"name": "Outgoing Dial Plan API Methods",
+					"item": [
+						{
+							"name": "List Outbound Rules",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve outboundDialPlanRules other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "tenantFilter",
-									"value": "{{tenantID}}",
-									"description": "If supplied, this filter only returns those outbound dial plan rules associated with the specified tenant.",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"outboundDialPlanRules"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those outboundDialPlanRules that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve outboundDialPlanRules other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "tenantFilter",
+											"value": "{{tenantID}}",
+											"description": "If supplied, this filter only returns those outbound dial plan rules associated with the specified tenant.",
+											"disabled": true
+										}
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Outbound Rule",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "domain",
-									"value": "",
-									"type": "text",
-									"disabled": true
+							},
+							"response": []
+						},
+						{
+							"name": "Create Outbound Rule",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "domain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "localContactDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "localFromDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sipProxy",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "trunkType",
+											"value": "sip",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "failureAction",
+											"value": "continue",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sipControlEncryption",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "callbridge",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBridge",
+											"value": "GUID",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callrouting",
+											"value": "default",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "localContactDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "localFromDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "sipProxy",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "trunkType",
-									"value": "sip",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "failureAction",
-									"value": "continue",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "sipControlEncryption",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "callbridge",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBridge",
-									"value": "GUID",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callrouting",
-									"value": "default",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"outboundDialPlanRules"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"outboundDialPlanRules"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Outbound Rule",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "domain",
-									"value": "",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Modify Outbound Rule",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "domain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "localContactDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "localFromDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sipProxy",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "trunkType",
+											"value": "sip",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "failureAction",
+											"value": "continue",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "sipControlEncryption",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "callbridge",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBridge",
+											"value": "GUID",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callrouting",
+											"value": "default",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "localContactDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "localFromDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "sipProxy",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "trunkType",
-									"value": "sip",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "failureAction",
-									"value": "continue",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "sipControlEncryption",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "scope",
-									"value": "callbridge",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBridge",
-									"value": "GUID",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callrouting",
-									"value": "default",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"outboundDialPlanRules",
+										"{{outboundDialPlanRuleID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"outboundDialPlanRules",
-								"{{outboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Outbound Rule",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"outboundDialPlanRules",
-								"{{outboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Outbound Rule details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"outboundDialPlanRules",
-								"{{outboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Inbound Rules",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"inboundDialPlanRules"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those inboundDialPlanRules that match the filter",
-									"disabled": true
+						{
+							"name": "Remove Outbound Rule",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve inboundDialPlanRules other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "tenantFilter",
-									"value": "{{tenantID}}",
-									"description": "Supply tenantFilter to return only those inbound dial plan rules associated with the specified tenant",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"outboundDialPlanRules",
+										"{{outboundDialPlanRuleID}}"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Inbound Rule",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "domain",
-									"value": "",
-									"type": "text",
-									"disabled": true
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Outbound Rule details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToUsers",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveTocoSpaces",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToIvrs",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToLyncConferences",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/outboundDialPlanRules/{{outboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"outboundDialPlanRules",
+										"{{outboundDialPlanRuleID}}"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"inboundDialPlanRules"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Modify Inbound Rule",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "domain",
-									"value": "",
-									"type": "text",
-									"disabled": true
+					"name": "Incoming Call Matching Dial Plan API Methods",
+					"item": [
+						{
+							"name": "List Inbound Rules",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToUsers",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveTocoSpaces",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToIvrs",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "resolveToLyncConferences",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"inboundDialPlanRules"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those inboundDialPlanRules that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve inboundDialPlanRules other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "tenantFilter",
+											"value": "{{tenantID}}",
+											"description": "Supply tenantFilter to return only those inbound dial plan rules associated with the specified tenant",
+											"disabled": true
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"inboundDialPlanRules",
-								"{{inboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Inbound Rule",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"inboundDialPlanRules",
-								"{{inboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Inbound Rule details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"inboundDialPlanRules",
-								"{{inboundDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Forwarding Rules",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"forwardingDialPlanRules"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those forwardingDialPlanRules that match the filter",
-									"disabled": true
+						{
+							"name": "Create Inbound Rule",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "domain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToUsers",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveTocoSpaces",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToIvrs",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToLyncConferences",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve forwardingDialPlanRules other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "tenantFilter",
-									"value": "{{tenantID}}",
-									"description": "If supplied, this filter restricts the results returned to those forwarding dial plan rules that are associated with the specified tenant",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"inboundDialPlanRules"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Forwarding Rule",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "matchPattern",
-									"value": "",
-									"type": "text",
-									"disabled": true
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Inbound Rule",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "domain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToUsers",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveTocoSpaces",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToIvrs",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "resolveToLyncConferences",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "destinationDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "action",
-									"value": "forward",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callerIdMode",
-									"value": "regenerate",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "uriParameters",
-									"value": "discard",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"inboundDialPlanRules",
+										"{{inboundDialPlanRuleID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"forwardingDialPlanRules"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Forwarding Rule",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "matchPattern",
-									"value": "",
-									"type": "text",
-									"disabled": true
+						{
+							"name": "Remove Inbound Rule",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "destinationDomain",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "action",
-									"value": "forward",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callerIdMode",
-									"value": "regenerate",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "priority",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "tenant",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "uriParameters",
-									"value": "discard",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"inboundDialPlanRules",
+										"{{inboundDialPlanRuleID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"forwardingDialPlanRules",
-								"{{forwardingDialPlanRuleID}}"
-							]
+						{
+							"name": "Retrieve Inbound Rule details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/inboundDialPlanRules/{{inboundDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"inboundDialPlanRules",
+										"{{inboundDialPlanRuleID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Remove Forwarding Rule",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+					"name": "Incoming Call Forwarding Dial Plan API Methods ",
+					"item": [
+						{
+							"name": "List Forwarding Rules",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forwardingDialPlanRules"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those forwardingDialPlanRules that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve forwardingDialPlanRules other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "tenantFilter",
+											"value": "{{tenantID}}",
+											"description": "If supplied, this filter restricts the results returned to those forwarding dial plan rules that are associated with the specified tenant",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"forwardingDialPlanRules",
-								"{{forwardingDialPlanRuleID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Forwarding Rule details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Create Forwarding Rule",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "matchPattern",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "destinationDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "action",
+											"value": "forward",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callerIdMode",
+											"value": "regenerate",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "uriParameters",
+											"value": "discard",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forwardingDialPlanRules"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"forwardingDialPlanRules",
-								"{{forwardingDialPlanRuleID}}"
-							]
+						{
+							"name": "Modify Forwarding Rule",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "matchPattern",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "destinationDomain",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "action",
+											"value": "forward",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callerIdMode",
+											"value": "regenerate",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "priority",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "tenant",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "uriParameters",
+											"value": "discard",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forwardingDialPlanRules",
+										"{{forwardingDialPlanRuleID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Forwarding Rule",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forwardingDialPlanRules",
+										"{{forwardingDialPlanRuleID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Forwarding Rule details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/forwardingDialPlanRules/{{forwardingDialPlanRuleID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"forwardingDialPlanRules",
+										"{{forwardingDialPlanRuleID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				}
 			]
 		},
@@ -2326,7 +2381,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve coSpaces other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve coSpaces other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -2607,7 +2662,7 @@
 										"diagnostics"
 									]
 								},
-								"description": "POST method performed on “/calls/&lt;call id&gt;/diagnostics\" generates call diagnostics for the call  in question."
+								"description": "POST method performed on “/calls/&lt;call id&gt;/diagnostics” generates call diagnostics for the call  in question."
 							},
 							"response": []
 						},
@@ -2637,7 +2692,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve active participants other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve active participants other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -2869,7 +2924,7 @@
 										{
 											"key": "layout",
 											"value": "",
-											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing \"defaultLayout\", and if both are supplied then \"defaultLayout\" will take precedence",
+											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing “defaultLayout“, and if both are supplied then “defaultLayout” will take precedence",
 											"type": "text",
 											"disabled": true
 										},
@@ -2935,7 +2990,7 @@
 										{
 											"key": "dtmfSequence",
 											"value": "String",
-											"description": "A sequence of DTMF key press commands to send to the far end either when the participant is initially created or during the call. The DTMF sequence is played out from the Call Bridge where the call for this participant is placed. In the supplied sequence, you can use the digits 0 to 9, * and #, as well as one or more comma characters (\",\") which add a pause between digits. (From version 2.4) ",
+											"description": "A sequence of DTMF key press commands to send to the far end either when the participant is initially created or during the call. The DTMF sequence is played out from the Call Bridge where the call for this participant is placed. In the supplied sequence, you can use the digits 0 to 9, * and #, as well as one or more comma characters (“,“) which add a pause between digits. (From version 2.4) ",
 											"type": "text",
 											"disabled": true
 										}
@@ -2955,7 +3010,7 @@
 										"participants"
 									]
 								},
-								"description": "***Note:***: Due to load balancing across clustered Meeting Servers, an explicit selection of a Call Bridge or Call Bridge Group or from configured dial plan rules, may result in the call leg instantiation (\"owned\" by the participant object) occurring on a remote clustered Call Bridge.\n\nSee also the section on participant related methods."
+								"description": "***Note:***: Due to load balancing across clustered Meeting Servers, an explicit selection of a Call Bridge or Call Bridge Group or from configured dial plan rules, may result in the call leg instantiation (“owned” by the participant object) occurring on a remote clustered Call Bridge.\n\nSee also the section on participant related methods."
 							},
 							"response": []
 						},
@@ -3140,7 +3195,7 @@
 										{
 											"key": "layout",
 											"value": "",
-											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing \"defaultLayout\", and if both are supplied then \"defaultLayout\" will take precedence",
+											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing “defaultLayout“, and if both are supplied then “defaultLayout” will take precedence",
 											"type": "text",
 											"disabled": true
 										},
@@ -3206,7 +3261,7 @@
 										{
 											"key": "dtmfSequence",
 											"value": "String",
-											"description": "A sequence of DTMF key press commands to send to the far end either when the participant is initially created or during the call. The DTMF sequence is played out from the Call Bridge where the call for this participant is placed. In the supplied sequence, you can use the digits 0 to 9, * and #, as well as one or more comma characters (\",\") which add a pause between digits. (From version 2.4) ",
+											"description": "A sequence of DTMF key press commands to send to the far end either when the participant is initially created or during the call. The DTMF sequence is played out from the Call Bridge where the call for this participant is placed. In the supplied sequence, you can use the digits 0 to 9, * and #, as well as one or more comma characters (“,“) which add a pause between digits. (From version 2.4) ",
 											"type": "text",
 											"disabled": true
 										}
@@ -3316,7 +3371,7 @@
 										{
 											"key": "mode",
 											"value": "exclude|selected",
-											"description": "If this parameter is not supplied in a create (POST) operation, it defaults to \"exclude.\"\n\n* exclude - the participant ids in filterIds are excluded from the operation\n* selected - only the participant ids in filterIds are included in the operation See More information on using bulk operation on participants below.\n(from version 2.4)",
+											"description": "If this parameter is not supplied in a create (POST) operation, it defaults to “exclude.“\n\n* exclude - the participant ids in filterIds are excluded from the operation\n* selected - only the participant ids in filterIds are included in the operation See More information on using bulk operation on participants below.\n(from version 2.4)",
 											"type": "text",
 											"disabled": true
 										}
@@ -3370,7 +3425,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve callProfiles other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve callProfiles other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -3381,7 +3436,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those callProfiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those callProfiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those callProfiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those callProfiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -3603,7 +3658,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve callLegs other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve callLegs other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -4161,7 +4216,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -4172,7 +4227,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those call leg profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call leg profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those call leg profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call leg profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -4999,7 +5054,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -5209,7 +5264,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -5220,7 +5275,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those call branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call branding profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those call branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call branding profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -5382,7 +5437,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -5393,7 +5448,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those DTMF profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those DTMF profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those DTMF profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those DTMF profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -5814,7 +5869,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve ivrs other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve ivrs other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -6030,7 +6085,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -6041,7 +6096,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those IVR Branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those IVR Branding profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those IVR Branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those IVR Branding profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -6196,7 +6251,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve participants other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve participants other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -6328,370 +6383,383 @@
 			"name": "User Related Methods",
 			"item": [
 				{
-					"name": "Retrieving Users",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/users?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those users that match the filter",
-									"disabled": true
+					"name": "User Methods",
+					"item": [
+						{
+							"name": "Retrieving Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "tenantFilter",
-									"value": "{{tenantID}}",
-									"description": "Supply an ID to return just those users associated with the specified tenant.",
-									"disabled": true
-								},
-								{
-									"key": "emailFilter",
-									"value": "String",
-									"description": "Supply emailFilter to restrict results returned to those users whose email value exactly matches the specified email address (from version 2.1).",
-									"disabled": true
-								},
-								{
-									"key": "cdrTagFilter",
-									"value": "String",
-									"description": "Supply cdrTagFilter to restrict results returned to those users whose cdrTag value exactly matches the specified cdrTag (from version 2.1).",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/users?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those users that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "tenantFilter",
+											"value": "{{tenantID}}",
+											"description": "Supply an ID to return just those users associated with the specified tenant.",
+											"disabled": true
+										},
+										{
+											"key": "emailFilter",
+											"value": "String",
+											"description": "Supply emailFilter to restrict results returned to those users whose email value exactly matches the specified email address (from version 2.1).",
+											"disabled": true
+										},
+										{
+											"key": "cdrTagFilter",
+											"value": "String",
+											"description": "Supply cdrTagFilter to restrict results returned to those users whose cdrTag value exactly matches the specified cdrTag (from version 2.1).",
+											"disabled": true
+										}
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieving Detailed Information on an Individual User",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/users/{{userID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"{{userID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieving a User’s coSpace Associations",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/users/{{userID}}/usercoSpaces",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"{{userID}}",
-								"usercoSpaces"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List User Profiles",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/userProfiles?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"userProfiles"
-							],
-							"query": [
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
-									"disabled": true
+						{
+							"name": "Retrieving Detailed Information on an Individual User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
-								},
-								{
-									"key": "usageFilter",
-									"value": "unreferenced|referenced",
-									"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those user profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those user profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/users/{{userID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"{{userID}}"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User Profile",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "cancreateCoSpaces",
-									"value": "true",
-									"type": "text"
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieving a User’s coSpace Associations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "canCreateCalls",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "canUseExternalDevices",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "canMakePhoneCalls",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "userToUserMessagingAllowed",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "audioParticipationAllowed",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "videoParticipationAllowed",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "presentationParticipationAllowed",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "hasLicense",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "canRecieveCalls",
-									"value": "true",
-									"type": "text"
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/users/{{userID}}/usercoSpaces",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"{{userID}}",
+										"usercoSpaces"
+									]
 								}
-							]
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/userProfiles",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"userProfiles"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Modify User Profile",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "cancreateCoSpaces",
-									"value": "true",
-									"type": "text",
-									"disabled": true
+					"name": "User Profile Methods",
+					"item": [
+						{
+							"name": "List User Profiles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "canCreateCalls",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canUseExternalDevices",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canMakePhoneCalls",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "userToUserMessagingAllowed",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "audioParticipationAllowed",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "videoParticipationAllowed",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "presentationParticipationAllowed",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "hasLicense",
-									"value": "true",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "canReceiveCalls",
-									"value": "true",
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/userProfiles?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userProfiles"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										},
+										{
+											"key": "usageFilter",
+											"value": "unreferenced|referenced",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those user profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those user profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
+											"disabled": true
+										}
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"userProfiles",
-								"{{userProfileID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove User Profile",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Create User Profile",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cancreateCoSpaces",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "canCreateCalls",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "canUseExternalDevices",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "canMakePhoneCalls",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "userToUserMessagingAllowed",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "audioParticipationAllowed",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "videoParticipationAllowed",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "presentationParticipationAllowed",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "hasLicense",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "canRecieveCalls",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/userProfiles",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userProfiles"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"userProfiles",
-								"{{userProfileID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve User Profile details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Modify User Profile",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "cancreateCoSpaces",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canCreateCalls",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canUseExternalDevices",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canMakePhoneCalls",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "userToUserMessagingAllowed",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "audioParticipationAllowed",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "videoParticipationAllowed",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "presentationParticipationAllowed",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "hasLicense",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "canReceiveCalls",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userProfiles",
+										"{{userProfileID}}"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"userProfiles",
-								"{{userProfileID}}"
-							]
+						{
+							"name": "Remove User Profile",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userProfiles",
+										"{{userProfileID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve User Profile details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/userProfiles/{{userProfileID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"userProfiles",
+										"{{userProfileID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"description": "User profiles control the facilities provided to the users in the profile, for instance whether they can create new coSpaces, create new calls, make phone calls, slave SIP endpoints, allowed to send and receive chat messages when in a point to point call with another user. For more information see also Section 14.",
+					"_postman_isSubFolder": true
 				}
 			]
 		},
@@ -6957,7 +7025,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -7032,7 +7100,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -7165,7 +7233,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve turnServers other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve turnServers other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -7444,7 +7512,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve webBridges other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve webBridges other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -7690,7 +7758,10 @@
 							"request": {
 								"method": "POST",
 								"header": [],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "https://{{mmpHost}}/api/v1/webBridges/{{webBridgeID}}/updateCustomization",
 									"protocol": "https",
@@ -7705,7 +7776,7 @@
 										"updateCustomization"
 									]
 								},
-								"description": "A POST to \"/webBridges/<web bridge id>/updateCustomization\" node causes any configured customization archive for the specified Web Bridge to be re-retrieved and pushed to that Web Bridge. For example, this allows the contents of a customization archive to be changed, and for those changes to take effect without needing to restart either the Call Bridge or the Web Bridge."
+								"description": "A POST to “/webBridges/<web bridge id>/updateCustomization” node causes any configured customization archive for the specified Web Bridge to be re-retrieved and pushed to that Web Bridge. For example, this allows the contents of a customization archive to be changed, and for those changes to take effect without needing to restart either the Call Bridge or the Web Bridge."
 							},
 							"response": []
 						},
@@ -7765,7 +7836,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -7949,7 +8020,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -7980,35 +8051,35 @@
 										{
 											"key": "loadBalancingEnabled",
 											"value": "false",
-											"description": "Whether or not Call Bridges in this Call Bridge group will attempt to load balance calls within the group. If this parameter is not supplied in a create (POST) operation, it defaults to \"false\" (from version 2.1)",
+											"description": "Whether or not Call Bridges in this Call Bridge group will attempt to load balance calls within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceLyncCalls",
 											"value": "false",
-											"description": "Whether or not incoming calls to coSpaces from Lync are load balanced within the Call Bridge Group. If this parameter is not supplied in a create (POST) operation, it defaults to \"false\" (from version 2.1)",
+											"description": "Whether or not incoming calls to coSpaces from Lync are load balanced within the Call Bridge Group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceOutgoingCalls",
 											"value": "false",
-											"description": "Whether or not calls from coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to \"false\" (from version 2.2)",
+											"description": "Whether or not calls from coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.2)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceUserCalls",
 											"value": "true",
-											"description": "Whether or not Cisco Meeting App calls to coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to \"true\" (from version 2.3)",
+											"description": "Whether or not Cisco Meeting App calls to coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “true” (from version 2.3)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceIndirectCalls",
 											"value": "false",
-											"description": "Whether or not incoming calls with Record-Route SIP headers should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to \"false\" (from version 2.4)",
+											"description": "Whether or not incoming calls with Record-Route SIP headers should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.4)",
 											"type": "text",
 											"disabled": true
 										}
@@ -8464,7 +8535,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -8669,7 +8740,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -8903,7 +8974,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -8914,7 +8985,7 @@
 										{
 											"key": "usageFilter",
 											"value": "unreferenced|referenced",
-											"description": "Supply \"usageFilter=unreferenced\" in the request to retrieve only those compatibility profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those compatibility profiles which are referenced in at least one place, you can supply \"usageFilter=referenced\"",
+											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those compatibility profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those compatibility profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
 									]
@@ -9160,7 +9231,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -9370,7 +9441,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -9612,7 +9683,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -9829,7 +9900,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the first \"page\" in the notional list.",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the first “page” in the notional list.",
 											"disabled": true
 										},
 										{
@@ -9963,7 +10034,7 @@
 										{
 											"key": "offset",
 											"value": "Number",
-											"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the\nfirst “page\" in the notional list",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the\nfirst “page” in the notional list",
 											"disabled": true
 										},
 										{
@@ -10244,390 +10315,402 @@
 			"name": "Multi-tenancy",
 			"item": [
 				{
-					"name": "List Tenants",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenants?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenants"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "String",
-									"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
-									"disabled": true
+					"name": "Tenants",
+					"item": [
+						{
+							"name": "List Tenants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve coSpaces other than the first \"page\" in the notional list.",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenants?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenants"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "String",
+											"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve coSpaces other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										}
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Tenant",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Customer1",
-									"type": "text"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Tenant",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Customer1",
+											"type": "text"
+										},
+										{
+											"key": "tenantGroup",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "dtmfProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ivrBrandingProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "participantLimit",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "userProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "tenantGroup",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "dtmfProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ivrBrandingProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "participantLimit",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "userProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenants",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenants"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenants",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenants"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Tenant",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Customer1",
-									"type": "text"
+						{
+							"name": "Modify Tenant",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Customer1",
+											"type": "text"
+										},
+										{
+											"key": "tenantGroup",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callLegProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "dtmfProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "ivrBrandingProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "participantLimit",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "userProfile",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
-								{
-									"key": "tenantGroup",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callLegProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "dtmfProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "ivrBrandingProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "callBrandingProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "participantLimit",
-									"value": null,
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "userProfile",
-									"value": null,
-									"type": "text",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenants",
+										"{{tenantID}}"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenants",
-								"{{tenantID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Tenant",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenants",
-								"{{tenantID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Tenant details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenants",
-								"{{tenantID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Tenant Groups",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenantGroups?",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenantGroups"
-							],
-							"query": [
-								{
-									"key": "offset",
-									"value": "Number",
-									"description": "An \"offset\" and \"limit\" can be supplied to retrieve elements other than the first \"page\" in the notional list.",
-									"disabled": true
+						{
+							"name": "Remove Tenant",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
 								},
-								{
-									"key": "limit",
-									"value": "Number",
-									"disabled": true
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenants",
+										"{{tenantID}}"
+									]
 								}
-							]
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve Tenant details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenants/{{tenantID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenants",
+										"{{tenantID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Create Tenant Group",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+					"name": "Tenant group operations",
+					"item": [
+						{
+							"name": "List Tenant Groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenantGroups?",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenantGroups"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "Number",
+											"description": "An “offset” and “limit” can be supplied to retrieve elements other than the first “page” in the notional list.",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "Number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenantGroups",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenantGroups"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Modify Tenant Group",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Create Tenant Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenantGroups",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenantGroups"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenantGroups",
-								"{{tenantGroupID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Tenant Group",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Modify Tenant Group",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenantGroups",
+										"{{tenantGroupID}}"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenantGroups",
-								"{{tenantGroupID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve Tenant Group details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
+						{
+							"name": "Remove Tenant Group",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenantGroups",
+										"{{tenantGroupID}}"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
-							"protocol": "https",
-							"host": [
-								"{{mmpHost}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tenantGroups",
-								"{{tenantGroupID}}"
-							]
+						{
+							"name": "Retrieve Tenant Group details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{mmpHost}}/api/v1/tenantGroups/{{tenantGroupID}}",
+									"protocol": "https",
+									"host": [
+										"{{mmpHost}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tenantGroups",
+										"{{tenantGroupID}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"_postman_isSubFolder": true
 				}
 			],
 			"event": [
@@ -10667,7 +10750,7 @@
 								{
 									"key": "uri",
 									"value": "Text",
-									"description": "The \"user part\" of the URI; that is, the part before any '@' character in a full URI",
+									"description": "The “user part” of the URI; that is, the part before any '@' character in a full URI",
 									"type": "text"
 								},
 								{
@@ -10751,7 +10834,7 @@
 								{
 									"key": "uri",
 									"value": "Text",
-									"description": "The \"user part\" of the URI; that is, the part before any '@' character in a full URI",
+									"description": "The “user part” of the URI; that is, the part before any '@' character in a full URI",
 									"type": "text"
 								},
 								{
