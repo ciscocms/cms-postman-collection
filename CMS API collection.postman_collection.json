@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "696f730e-4865-402d-9a09-abe4d2761af7",
+		"_postman_id": "78f4dd6d-35f6-4037-9db1-0fbd4aed11c9",
 		"name": "CMS API collection",
 		"description": "Cisco Meeting Server API collection, organized according to CMS API Guide structure.\nSee https://github.com/ciscocms/cms-postman-collection for instructions on how to use this collection.\n\nFurther details: \nhttps://www.cisco.com/c/en/us/support/conferencing/meeting-server/products-programming-reference-guides-list.html\nhttps://developer.cisco.com/site/cisco-meeting-server/\n\n---\n\n## Authors: Steve Kapinos, Zoltan Kelemen\n\nlook for latest version on https://github.com/ciscocms/cms-postman-collection\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -47,19 +47,19 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those coSpaces that match the filter",
 											"disabled": true
 										},
 										{
 											"key": "tenantFilter",
 											"value": "{{tenantID}}",
-											"description": "Supply tenantFilter=<tenant id> to return just those coSpaces associated with that tenant",
+											"description": "Supply “tenantFilter=<tenant id>” to return just those coSpaces associated with that tenant",
 											"disabled": true
 										},
 										{
 											"key": "callLegProfileFilter",
 											"value": "{{callLegProfileID}}",
-											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
+											"description": "Supply “callLegProfileFilter=<call leg profile id>” to return just those coSpaces using that call leg profile",
 											"disabled": true
 										}
 									]
@@ -107,7 +107,7 @@
 										{
 											"key": "cdrTag",
 											"value": "String",
-											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag“) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
+											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag”) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
 											"type": "text",
 											"disabled": true
 										},
@@ -266,7 +266,7 @@
 										{
 											"key": "cdrTag",
 											"value": "String",
-											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag“) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
+											"description": "Up to 100 characters of free form text to identify this coSpace in a CDR; when a “callStart” CDR is generated for a call associated with this coSpace, this tag will be written (as “cdrTag”) to the callStart CDR. See the Cisco Meeting Server CDR Reference for details. The cdrTag can be modified in a PUT method.",
 											"type": "text",
 											"disabled": true
 										},
@@ -496,7 +496,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those coSpaceUsers that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those coSpaceUsers that match the filter",
 											"disabled": true
 										},
 										{
@@ -513,7 +513,7 @@
 										{
 											"key": "callLegProfileFilter",
 											"value": "{{callLegProfileID}}",
-											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaceUsers using that call leg profile",
+											"description": "Supply “callLegProfileFilter=<call leg profile id>” to return just those coSpaceUsers using that call leg profile",
 											"disabled": true
 										}
 									]
@@ -884,7 +884,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those accessMethods that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those accessMethods that match the filter",
 											"disabled": true
 										},
 										{
@@ -901,7 +901,7 @@
 										{
 											"key": "callLegProfileFilter",
 											"value": "{{callLegProfileID}}",
-											"description": "Supply callLegProfileFilter=<call leg profile id> to return just those coSpaces using that call leg profile",
+											"description": "Supply “callLegProfileFilter=<call leg profile id>” to return just those coSpaces using that call leg profile",
 											"disabled": true
 										}
 									]
@@ -1596,7 +1596,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those outboundDialPlanRules that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those outboundDialPlanRules that match the filter",
 											"disabled": true
 										},
 										{
@@ -1685,7 +1685,7 @@
 										},
 										{
 											"key": "callBridge",
-											"value": "GUID",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -1782,7 +1782,7 @@
 										},
 										{
 											"key": "callBridge",
-											"value": "GUID",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -1896,7 +1896,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those inboundDialPlanRules that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those inboundDialPlanRules that match the filter",
 											"disabled": true
 										},
 										{
@@ -2136,7 +2136,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those forwardingDialPlanRules that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those forwardingDialPlanRules that match the filter",
 											"disabled": true
 										},
 										{
@@ -3669,7 +3669,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those callLegs that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those callLegs that match the filter",
 											"disabled": true
 										}
 									]
@@ -5065,7 +5065,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those dial transforms that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those dial transforms that match the filter",
 											"disabled": true
 										}
 									]
@@ -5863,7 +5863,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those ivrs that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those ivrs that match the filter",
 											"disabled": true
 										},
 										{
@@ -5880,7 +5880,7 @@
 										{
 											"key": "tenantFilter",
 											"value": "{{tenantID}}",
-											"description": "Supply tenantFilter=<tenant id> to return just those ivrs associated with that tenant",
+											"description": "Supply “tenantFilter=<tenant id>” to return just those ivrs associated with that tenant",
 											"disabled": true
 										}
 									]
@@ -6245,7 +6245,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those participants that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those participants that match the filter",
 											"disabled": true
 										},
 										{
@@ -6409,7 +6409,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those users that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those users that match the filter",
 											"disabled": true
 										},
 										{
@@ -7227,7 +7227,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those turnServers that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those turnServers that match the filter",
 											"disabled": true
 										},
 										{
@@ -7506,7 +7506,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those webBridges that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those webBridges that match the filter",
 											"disabled": true
 										},
 										{
@@ -7523,7 +7523,7 @@
 										{
 											"key": "tenantFilter",
 											"value": "{{tenantID}}",
-											"description": "Supply tenantFilter=<tenant id> to return just those webBridges associated with that tenant",
+											"description": "Supply “tenantFilter=<tenant id>” to return just those webBridges associated with that tenant",
 											"disabled": true
 										}
 									]
@@ -9225,7 +9225,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those LDAP servers that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those LDAP servers that match the filter",
 											"disabled": true
 										},
 										{
@@ -9435,7 +9435,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those LDAP mappings that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those LDAP mappings that match the filter",
 											"disabled": true
 										},
 										{
@@ -9677,7 +9677,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those LDAP sources that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those LDAP sources that match the filter",
 											"disabled": true
 										},
 										{
@@ -9712,32 +9712,32 @@
 									"urlencoded": [
 										{
 											"key": "server",
-											"value": "ldapServerID",
+											"value": "{{ldapServerID}}",
 											"type": "text"
 										},
 										{
 											"key": "mapping",
-											"value": "ldapMappingID",
+											"value": "{{ldapMappingID}}",
 											"type": "text"
 										},
 										{
 											"key": "baseDN",
-											"value": "ou=Users,dc=company,dc=com",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "filter",
-											"value": "(&(sAMAccountType=805306368)(sAMAccountName=*))",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text"
 										},
 										{
 											"key": "userProfile",
-											"value": "",
+											"value": "{{userProfileID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -9768,37 +9768,37 @@
 									"urlencoded": [
 										{
 											"key": "server",
-											"value": "ldapServerID",
+											"value": "{{ldapServerID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "mapping",
-											"value": "ldapMappingID",
+											"value": "{{ldapMappingID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "baseDN",
-											"value": "ou=users,dc=company,dc=com",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "filter",
-											"value": "(&(sAMAccountType=805306368)(sAMAccountName=*))",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "userProfile",
-											"value": "",
+											"value": "{{userProfileID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -10063,18 +10063,18 @@
 									"urlencoded": [
 										{
 											"key": "ldapServer",
-											"value": "f5f19a3c-8064-4f5a-a12a-ccbab63ba2b1",
+											"value": "{{ldapServerID}}",
 											"type": "text"
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "baseDn",
-											"value": "ou=ExtDir,dc=company,dc=org",
+											"value": "String",
 											"type": "text"
 										},
 										{
@@ -10085,55 +10085,55 @@
 										},
 										{
 											"key": "label",
-											"value": "Exec-Branch",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "50",
+											"value": "Number",
 											"type": "text"
 										},
 										{
 											"key": "firstName",
-											"value": "$givenName$",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "lastName",
-											"value": "$sn$",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "displayName",
-											"value": "$displayName$",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "phone",
-											"value": "$telephoneNumber$",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "mobile",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "email",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sip",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "organization",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -10164,34 +10164,34 @@
 									"urlencoded": [
 										{
 											"key": "ldapServer",
-											"value": "f5f19a3c-8064-4f5a-a12a-ccbab63ba2b1",
+											"value": "{{ldapServerID}}",
 											"type": "text"
 										},
 										{
 											"key": "tenant",
-											"value": "3268",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "baseDn",
-											"value": "ou=ExtDir,dc=company,dc=org",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "filterFormat",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "label",
-											"value": "Exec-Branch",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "50",
+											"value": "Number",
 											"type": "text"
 										},
 										{
@@ -10341,7 +10341,7 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"description": "Supply filter=<string> in the URI to return just those coSpaces that match the filter",
+											"description": "Supply “filter=<string>” in the URI to return just those coSpaces that match the filter",
 											"disabled": true
 										},
 										{
@@ -10370,42 +10370,42 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Customer1",
+											"value": "string",
 											"type": "text"
 										},
 										{
 											"key": "tenantGroup",
-											"value": null,
+											"value": "{{tenantGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLegProfile",
-											"value": null,
+											"value": "{{callLegProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callProfile",
-											"value": null,
+											"value": "{{callProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "dtmfProfile",
-											"value": null,
+											"value": "{{dtmfProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "ivrBrandingProfile",
-											"value": null,
+											"value": "{{ivrBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBrandingProfile",
-											"value": null,
+											"value": "{{callBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -10417,7 +10417,7 @@
 										},
 										{
 											"key": "userProfile",
-											"value": null,
+											"value": "{{userProfileID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -10448,42 +10448,42 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Customer1",
+											"value": "string",
 											"type": "text"
 										},
 										{
 											"key": "tenantGroup",
-											"value": null,
+											"value": "{{tenantGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLegProfile",
-											"value": null,
+											"value": "{{callLegProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callProfile",
-											"value": null,
+											"value": "{{callProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "dtmfProfile",
-											"value": null,
+											"value": "{{dtmfProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "ivrBrandingProfile",
-											"value": null,
+											"value": "{{ivrBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBrandingProfile",
-											"value": null,
+											"value": "{{callBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -10495,7 +10495,7 @@
 										},
 										{
 											"key": "userProfile",
-											"value": null,
+											"value": "{{userProfileID}}",
 											"type": "text",
 											"disabled": true
 										}
