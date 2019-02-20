@@ -2,6 +2,11 @@ v2.4.beta
 
 look for latest version on https://github.com/ciscocms/cms-postman-collection
 
+## February, 2019
+* Major cleanup of attribute values
+* all optional attributes marked as "disabled" when imported into Postman
+* all attribute values should feature variable placeholders where applicable.
+
 ## January, 2019
 * Published on github
 * started working on completion of all request parameters and complete 2.4+ compatibility (2.5 API is identical to 2.4)
