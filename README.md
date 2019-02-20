@@ -58,7 +58,9 @@ The environment can be replicated for each CMS cluster (or even node) you want t
 
 The folder structure and order of requests are following the CMS API guide.
 
-**Be aware, that request parameters are not yet complete and/or always correct. Always check in the latest API guide.**
+This collection is not meant for reference value, nor does it have full documentation. 
+Always check in the latest API guide for details.
+
 
 ## API reference guides, examples, labs 
 
