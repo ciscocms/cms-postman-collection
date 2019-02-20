@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "78f4dd6d-35f6-4037-9db1-0fbd4aed11c9",
+		"_postman_id": "e44bee02-91f7-4182-b9b0-7ffd9e9c10e6",
 		"name": "CMS API collection",
 		"description": "Cisco Meeting Server API collection, organized according to CMS API Guide structure.\nSee https://github.com/ciscocms/cms-postman-collection for instructions on how to use this collection.\n\nFurther details: \nhttps://www.cisco.com/c/en/us/support/conferencing/meeting-server/products-programming-reference-guides-list.html\nhttps://developer.cisco.com/site/cisco-meeting-server/\n\n---\n\n## Authors: Steve Kapinos, Zoltan Kelemen\n\nlook for latest version on https://github.com/ciscocms/cms-postman-collection\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -120,7 +120,21 @@
 										},
 										{
 											"key": "defaultlayout",
-											"value": "allequal",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
 											"type": "text",
 											"disabled": true
@@ -155,7 +169,10 @@
 										},
 										{
 											"key": "requireCallId",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
 											"type": "text",
 											"disabled": true
@@ -169,7 +186,10 @@
 										},
 										{
 											"key": "nonMemberAccess",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
 											"type": "text",
 											"disabled": true
@@ -272,7 +292,21 @@
 										},
 										{
 											"key": "defaultlayout",
-											"value": "allequal",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"description": "The default layout to be used for new call legs in this coSpace. See Default layout options for the difference in naming between the API and the Web Admin interface",
 											"type": "text",
 											"disabled": true
@@ -307,7 +341,10 @@
 										},
 										{
 											"key": "requireCallId",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If this value is supplied as true, and no callId is currently specified for the coSpace, a new auto-generated call Id will be assigned",
 											"type": "text",
 											"disabled": true
@@ -321,14 +358,20 @@
 										},
 										{
 											"key": "regenerateSecret",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "* If provided as true - a new security value is generated for this coSpace and the former value is no longer valid (for instance, any hyperlinks including it will cease to work) * l If provided as false - do not generate a new secret value for this coSpace; this has no effect This parameter is only valid for the modify (PUT) case.",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "nonMemberAccess",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "Controls whether non-members of the coSpace are able to have access to the coSpace. If not provided, behaviour defaults to true. (From version 2.0).",
 											"type": "text",
 											"disabled": true
@@ -543,61 +586,91 @@
 										},
 										{
 											"key": "canDestroy",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canAddRemoveMember",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeName",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeURI",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeCallId",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangePasscode",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canPostMessage",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canRemoveSelf",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canDeleteAllMessages",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeNonMemberAccessAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -629,68 +702,89 @@
 									"mode": "urlencoded",
 									"urlencoded": [
 										{
-											"key": "userJid",
-											"value": "user0001@demo.org",
-											"type": "text",
-											"disabled": true
-										},
-										{
 											"key": "callLegProfile",
-											"value": "",
+											"value": "{{callLegProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canDestroy",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canAddRemoveMember",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeName",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeURI",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangeCallId",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canChangePasscode",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canPostMessage",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canRemoveSelf",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canDeleteAllMessages",
-											"value": "True",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -786,13 +880,14 @@
 									"urlencoded": [
 										{
 											"key": "message",
-											"value": "Hello World",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "from",
-											"value": "Name",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -919,7 +1014,7 @@
 									"urlencoded": [
 										{
 											"key": "uri",
-											"value": "String (URI user part)",
+											"value": "URI user part",
 											"description": "The URI to be used for dialing in via this access method. (The URI “user part” is the part before any '@' character in a full URI.)",
 											"type": "text",
 											"disabled": true
@@ -954,7 +1049,10 @@
 										},
 										{
 											"key": "scope",
-											"value": "public|private",
+											"value": [
+												"public",
+												"private"
+											],
 											"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
 											"type": "text",
 											"disabled": true
@@ -995,7 +1093,7 @@
 									"urlencoded": [
 										{
 											"key": "uri",
-											"value": "String (URI user part)",
+											"value": "URI user part",
 											"description": "The URI to be used for dialing in via this access method. (The URI “user part” is the part before any '@' character in a full URI.)",
 											"type": "text",
 											"disabled": true
@@ -1030,7 +1128,10 @@
 										},
 										{
 											"key": "scope",
-											"value": "public|private",
+											"value": [
+												"public",
+												"private"
+											],
 											"description": "The visibility of this coSpace access method to users of Cisco Meeting App who are members of the coSpace\n\n* If provided as public - details of this coSpace access method can be made available to members of the coSpace\n* If provided as private - details of this coSpace access method will not be made available to members of the coSpace\n\nNote: if you set the scope to public then the Cisco Meeting App can no longer edit the coSpace details. In addition, the uri shown under the name is that from the access method.",
 											"type": "text",
 											"disabled": true
@@ -1044,7 +1145,10 @@
 										},
 										{
 											"key": "regenerateSecret",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "* If provided as true - a new security value is generated for this coSpace access method and the former value is no longer valid (for instance, any hyperlinks including it will cease to work)\n* If provided as false - do not generate a new secret value for this coSpace access method; this has no effect",
 											"type": "text",
 											"disabled": true
@@ -1211,8 +1315,12 @@
 										},
 										{
 											"key": "nonMemberAccess",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -1289,8 +1397,12 @@
 										},
 										{
 											"key": "nonMemberAccess",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -1400,8 +1512,12 @@
 										},
 										{
 											"key": "removeAll",
-											"value": "false",
-											"type": "text"
+											"value": [
+												"false",
+												"true"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -1436,8 +1552,12 @@
 										},
 										{
 											"key": "removeAll",
-											"value": "false",
-											"type": "text"
+											"value": [
+												"false",
+												"true"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -1631,55 +1751,69 @@
 									"urlencoded": [
 										{
 											"key": "domain",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "String",
+											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "localContactDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "localFromDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipProxy",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "trunkType",
-											"value": "sip",
+											"value": [
+												"sip",
+												"lync",
+												"avaya"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "failureAction",
-											"value": "continue",
+											"value": [
+												"stop",
+												"continue"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipControlEncryption",
-											"value": "",
+											"value": [
+												"auto",
+												"encrypted",
+												"unencrypted"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "scope",
-											"value": "callbridge",
+											"value": [
+												"global",
+												"callBridge",
+												"callBridgeGroup"
+											],
 											"type": "text",
 											"disabled": true
 										},
@@ -1691,13 +1825,16 @@
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callrouting",
-											"value": "default",
+											"value": [
+												"default",
+												"traversal"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -1728,55 +1865,69 @@
 									"urlencoded": [
 										{
 											"key": "domain",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "String",
+											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "localContactDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "localFromDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipProxy",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "trunkType",
-											"value": "sip",
+											"value": [
+												"sip",
+												"lync",
+												"avaya"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "failureAction",
-											"value": "continue",
+											"value": [
+												"stop",
+												"continue"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipControlEncryption",
-											"value": "",
+											"value": [
+												"auto",
+												"encrypted",
+												"unencrypted"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "scope",
-											"value": "callbridge",
+											"value": [
+												"global",
+												"callBridge",
+												"callBridgeGroup"
+											],
 											"type": "text",
 											"disabled": true
 										},
@@ -1788,13 +1939,16 @@
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callrouting",
-											"value": "default",
+											"value": [
+												"default",
+												"traversal"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -1931,43 +2085,54 @@
 									"urlencoded": [
 										{
 											"key": "domain",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "String",
+											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToUsers",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveTocoSpaces",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToIvrs",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToLyncConferences",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -1998,43 +2163,54 @@
 									"urlencoded": [
 										{
 											"key": "domain",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "String",
+											"type": "text"
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToUsers",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveTocoSpaces",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToIvrs",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveToLyncConferences",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -2171,43 +2347,52 @@
 									"urlencoded": [
 										{
 											"key": "matchPattern",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "destinationDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "action",
-											"value": "forward",
+											"value": [
+												"forward",
+												"reject"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callerIdMode",
-											"value": "regenerate",
+											"value": [
+												"regenerate",
+												"preserve"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "uriParameters",
-											"value": "discard",
+											"value": [
+												"discard",
+												"forward"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -2238,43 +2423,52 @@
 									"urlencoded": [
 										{
 											"key": "matchPattern",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "destinationDomain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "action",
-											"value": "forward",
+											"value": [
+												"forward",
+												"reject"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callerIdMode",
-											"value": "regenerate",
+											"value": [
+												"regenerate",
+												"preserve"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "uriParameters",
-											"value": "discard",
+											"value": [
+												"discard",
+												"forward"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -2422,61 +2616,86 @@
 										},
 										{
 											"key": "name",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "locked",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "recording",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "streaming",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelf",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContribution",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinAudioMuteOverride",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageText",
-											"value": "Hello World",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messagePosition",
-											"value": "middle",
+											"value": [
+												"top",
+												"middle",
+												"bottom"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageDuration",
-											"value": "permanent",
+											"value": [
+												"Number",
+												"permanent"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -2507,67 +2726,91 @@
 									"urlencoded": [
 										{
 											"key": "coSpace",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "{{coSpaceID}}",
+											"type": "text"
 										},
 										{
 											"key": "name",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "locked",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "recording",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "streaming",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelf",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContribution",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinAudioMuteOverride",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageText",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messagePosition",
-											"value": "middle",
+											"value": [
+												"top",
+												"middle",
+												"bottom"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageDuration",
-											"value": "permanent",
+											"value": [
+												"Number",
+												"permanent"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -2746,7 +2989,10 @@
 										},
 										{
 											"key": "confirmation",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "if supplied, this overrides the automatic choice of whether to require a confirmation from the remote party to join the call. true - always require a confirmation from the remote party; typically this takes the form of a voice prompt requiring them to hit a key to join. false - never require a confirmation from the remote party; the remote party will be joinIf supplied must be an ID for the Meeting Server to associate with this call leg. This will be returned by the Meeting Server when the call leg is later queried and therefore should be a value that has meaning to the requestored into the coSpace when they accept the incoming call",
 											"type": "text",
 											"disabled": true
@@ -2767,195 +3013,310 @@
 										},
 										{
 											"key": "needsActivation",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionallowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingallowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
-											"key": "deactiviationMode",
-											"value": "",
+											"key": "deactivationMode",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "layout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing “defaultLayout“, and if both are supplied then “defaultLayout” will take precedence",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "disconnectOthersAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "addParticipantAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "(From version 2.3)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "qualityMain",
-											"value": "unrestricted",
+											"value": [
+												"unrestricted",
+												"max1080p30",
+												"max720p30",
+												"max480p30"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "qualityPresentation",
-											"value": "unrestricted",
+											"value": [
+												"unrestricted",
+												"max1080p30",
+												"max720p5"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantCounter",
-											"value": "never| auto| always",
+											"value": [
+												"never",
+												"auto",
+												"always"
+											],
 											"type": "text",
 											"disabled": true
 										},
@@ -2982,7 +3343,7 @@
 										},
 										{
 											"key": "nameLabelOverride",
-											"value": "String (maximum of 50 bytes of UTF-8)",
+											"value": "String",
 											"description": "If supplied, overrides the name for this participant. Setting an empty string clears the value and restores the original name. Overriding the name of a participant and its associated call leg(s) is interchangeable and affects both; the latest change takes precedence. It changes the name of the participant in the following: on-screen name label viewed by other conference participants, ActiveControl roster list, any place that the Meeting App sees the, name of the participant in a call, CDR records, where the name appears in the web interface. (From version 2.4) ",
 											"type": "text",
 											"disabled": true
@@ -3038,195 +3399,310 @@
 										},
 										{
 											"key": "needsActivation",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionallowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingallowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
-											"key": "deactiviationMode",
-											"value": "",
+											"key": "deactivationMode",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "layout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"description": "This parameter is provided for backward compatibility with early versions of Meeting Server - it has the equivalent functionality to changing “defaultLayout“, and if both are supplied then “defaultLayout” will take precedence",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "disconnectOthersAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "addParticipantAllowed",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "(From version 2.3)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "qualityMain",
-											"value": "unrestricted",
+											"value": [
+												"unrestricted",
+												"max1080p30",
+												"max720p30",
+												"max480p30"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "qualityPresentation",
-											"value": "unrestricted",
+											"value": [
+												"unrestricted",
+												"max1080p30",
+												"max720p5"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantCounter",
-											"value": "never| auto| always",
+											"value": [
+												"never",
+												"auto",
+												"always"
+											],
 											"type": "text",
 											"disabled": true
 										},
@@ -3253,7 +3729,7 @@
 										},
 										{
 											"key": "nameLabelOverride",
-											"value": "String (maximum of 50 bytes of UTF-8)",
+											"value": "String",
 											"description": "If supplied, overrides the name for this participant. Setting an empty string clears the value and restores the original name. Overriding the name of a participant and its associated call leg(s) is interchangeable and affects both; the latest change takes precedence. It changes the name of the participant in the following: on-screen name label viewed by other conference participants, ActiveControl roster list, any place that the Meeting App sees the, name of the participant in a call, CDR records, where the name appears in the web interface. (From version 2.4) ",
 											"type": "text",
 											"disabled": true
@@ -3322,35 +3798,61 @@
 									"urlencoded": [
 										{
 											"key": "rxAudioMute",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If true, mute the receiving of audio from all endpoints.",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If true, mute the transmission of audio from all endpoints.",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If true, mute (block) the receiving of video from all endpoints.",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "true|false",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "If true, mute (block)the transmission of video from all endpoints.",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "layout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
@@ -3370,7 +3872,10 @@
 										},
 										{
 											"key": "mode",
-											"value": "exclude|selected",
+											"value": [
+												"exclude",
+												"selected"
+											],
 											"description": "If this parameter is not supplied in a create (POST) operation, it defaults to “exclude.“\n\n* exclude - the participant ids in filterIds are excluded from the operation\n* selected - only the participant ids in filterIds are included in the operation See More information on using bulk operation on participants below.\n(from version 2.4)",
 											"type": "text",
 											"disabled": true
@@ -3435,7 +3940,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those callProfiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those callProfiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -3454,43 +3962,61 @@
 									"urlencoded": [
 										{
 											"key": "participantLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageBoardEnabled",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "locked",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "recordingMode",
-											"value": "manual",
+											"value": [
+												"manual",
+												"disabled",
+												"automatic"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "streamingMode",
-											"value": "manual",
+											"value": [
+												"manual",
+												"disabled",
+												"automatic"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "passcodeMode",
-											"value": "timeout",
+											"value": [
+												"manual",
+												"disabled",
+												"automatic"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "passcodeTimeout",
-											"value": "20",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										}
@@ -3521,42 +4047,60 @@
 									"urlencoded": [
 										{
 											"key": "participantLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "messageBoardEnabled",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "locked",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "recordingMode",
-											"value": "manual",
+											"value": [
+												"manual",
+												"disabled",
+												"automatic"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "streamingMode",
-											"value": "manual",
+											"value": [
+												"manual",
+												"disabled",
+												"automatic"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "passcodeMode",
-											"value": "timeout",
+											"value": [
+												"required",
+												"timeout"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "passcodeTimeout",
-											"value": "20",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										}
@@ -3687,204 +4231,308 @@
 									"urlencoded": [
 										{
 											"key": "remoteParty",
-											"value": null,
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "bandwidth",
-											"value": null,
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "confirmation",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "ownerId",
-											"value": null,
+											"value": "{{userID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "chosenLayout",
-											"value": "allequal",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLegProfile",
-											"value": null,
+											"value": "{{callLegProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "dtmfSequence",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
-											"key": "deactiviationMode",
-											"value": "",
+											"key": "deactivationMode",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "layout",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -3917,204 +4565,308 @@
 									"urlencoded": [
 										{
 											"key": "remoteParty",
-											"value": null,
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "bandwidth",
-											"value": null,
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "confirmation",
-											"value": null,
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "ownerId",
-											"value": null,
+											"value": "{{userID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "chosenLayout",
-											"value": null,
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLegProfile",
-											"value": null,
+											"value": "{{callLegProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "dtmfSequence",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
-											"key": "deactiviationMode",
-											"value": "",
+											"key": "deactivationMode",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "layout",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "",
-											"value": "",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -4226,7 +4978,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those call leg profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call leg profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -4245,198 +5000,313 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "needsActivation",
-											"value": "false",
-											"type": "text"
+											"value": [
+												"false",
+												"true"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "allEqual",
-											"type": "text"
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "dualStream",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContributionAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "changeJoinAudioMuteOverrideAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelfAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "10",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "10",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "auto",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationMode",
-											"value": "",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "serverOnly",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLockAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "recordingControlAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "maxCallDurationTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "disconnectOthersAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "streamingControlAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -4465,211 +5335,311 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "needsActivation",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultLayout",
-											"value": "allEqual",
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeLayoutAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLabels",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCallAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationDisplayMode",
-											"value": "dualStream",
+											"value": [
+												"dualStream",
+												"singleStream"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationContributionAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContributionAllowed",
-											"value": "",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationViewingAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteOthersAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "changeJoinAudioMuteOverrideAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteOthersAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMuteSelfAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "joinToneParticipantThreshold",
-											"value": "10",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "leaveToneParticipantThreshold",
-											"value": "10",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoMode",
-											"value": "auto",
+											"value": [
+												"auto",
+												"disabled"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txAudioMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "rxVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "txVideoMute",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipMediaEncryption",
-											"value": "",
+											"value": [
+												"optional",
+												"required",
+												"prohibited"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioPacketSizeMs",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationMode",
-											"value": "",
+											"value": [
+												"deactivate",
+												"disconnect",
+												"remainActivated"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "deactivationModeTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "telepresenceCallsAllowed",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sipPresentationChannelEnabled",
-											"value": "",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "bfcpMode",
-											"value": "serverOnly",
+											"value": [
+												"serverOnly",
+												"serverAndClient"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callLockAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "recordingControlAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "maxCallDurationTime",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "disconnectOthersAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "streamingControlAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -4799,212 +5769,8 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "remoteParty",
-											"value": null,
-											"type": "text"
-										},
-										{
-											"key": "bandwidth",
-											"value": null,
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "confirmation",
-											"value": null,
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "ownerId",
-											"value": null,
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "chosenLayout",
-											"value": null,
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "callLegProfile",
-											"value": null,
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "dtmfSequence",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "defaultLayout",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "participantLabels",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "presentationDisplayMode",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "presentationContributionAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "presentationViewingAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "endCallAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "muteOthersAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "videoMuteOthersAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "muteSelfAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "videoMuteSelfAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "changeLayoutAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "joinToneParticipantThreshold",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "leaveToneParticipantThreshold",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "videoMode",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "rxAudioMute",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "txAudioMute",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "rxVideoMute",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "txVideoMute",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "sipMediaEncryption",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "audioPacketSizeMs",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "deactiviationMode",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "deactivationModeTime",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "telepresenceCallsAllowed",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "sipPresentationChannelEnabled",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "bfcpMode",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "layout",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										}
-									]
+									"mode": "raw",
+									"raw": ""
 								},
 								"url": {
 									"raw": "https://{{mmpHost}}/api/v1/callLegs/{{callLegID}}/generateKeyFrame",
@@ -5083,31 +5849,39 @@
 									"urlencoded": [
 										{
 											"key": "type",
-											"value": "",
+											"value": [
+												"raw",
+												"strip",
+												"phone"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "match",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "transform",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "action",
-											"value": "",
+											"value": [
+												"accept",
+												"acceptPhone",
+												"deny"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -5138,31 +5912,39 @@
 									"urlencoded": [
 										{
 											"key": "type",
-											"value": "",
+											"value": [
+												"raw",
+												"strip",
+												"phone"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "match",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "transform",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "priority",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "action",
-											"value": "",
+											"value": [
+												"accept",
+												"acceptPhone",
+												"deny"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -5274,7 +6056,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those call branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those call branding profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -5293,14 +6078,15 @@
 									"urlencoded": [
 										{
 											"key": "invitationTemplate",
-											"value": "http://server/directory/file",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resourceLocation",
-											"value": "http://server/directory",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -5329,13 +6115,13 @@
 									"urlencoded": [
 										{
 											"key": "invitationTemplate",
-											"value": "http://server/directory/file",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resourceLocation",
-											"value": "http://server/directory",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										}
@@ -5447,7 +6233,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those DTMF profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those DTMF profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -5466,139 +6255,167 @@
 									"urlencoded": [
 										{
 											"key": "lockCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unlockCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "nextLayout",
-											"value": null,
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "previousLayout",
-											"value": null,
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "toggleMuteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllExceptSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllExceptSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "startRecording",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "stopRecording",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelf",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "cancelAllowAllMuteSelf",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContribution",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "cancelAllowAllPresentationContribution",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultMuteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllNewAndAllExceptSelfAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllNewAndAllExceptSelfAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "startStreaming",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "stopStreaming",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -5629,139 +6446,167 @@
 									"urlencoded": [
 										{
 											"key": "lockCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unlockCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "nextLayout",
-											"value": null,
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "previousLayout",
-											"value": null,
+											"value": [
+												"allEqual",
+												"speakerOnly",
+												"telepresence",
+												"stacked",
+												"allEqualQuarters",
+												"allEqualNinths",
+												"allEqualSixteenths",
+												"allEqualTwentyFifths",
+												"onePlusFive",
+												"onePlusSeven",
+												"onePlusNine",
+												"automatic",
+												"onePlusN"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "toggleMuteSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllExceptSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllExceptSelfAudio",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "endCall",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "startRecording",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "stopRecording",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllMuteSelf",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "cancelAllowAllMuteSelf",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowAllPresentationContribution",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "cancelAllowAllPresentationContribution",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "defaultMuteAllNewAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "muteAllNewAndAllExceptSelfAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "unmuteAllNewAndAllExceptSelfAudio",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "startStreaming",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "stopStreaming",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -5898,33 +6743,44 @@
 									"urlencoded": [
 										{
 											"key": "uri",
-											"value": "",
+											"value": "URI user part",
 											"type": "text"
 										},
 										{
 											"key": "tenant",
-											"value": "",
-											"type": "text"
+											"value": "{{tenantID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tenantGroup",
-											"value": "",
-											"type": "text"
+											"value": "{{tenantGroupID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "ivrBrandingProfile",
-											"value": "",
-											"type": "text"
+											"value": "{{ivrBrandingProfileID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "resolveCoSpaceCallIds",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "resolveLyncConferenceIds",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -5953,37 +6809,42 @@
 									"urlencoded": [
 										{
 											"key": "uri",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "URI user part",
+											"type": "text"
 										},
 										{
 											"key": "tenant",
-											"value": "",
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenantGroup",
-											"value": "",
+											"value": "{{tenantGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "ivrBrandingProfile",
-											"value": "",
+											"value": "{{ivrBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveCoSpaceCallIds",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveLyncConferenceIds",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -6095,7 +6956,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those IVR Branding profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those IVR Branding profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -6114,8 +6978,9 @@
 									"urlencoded": [
 										{
 											"key": "resourceLocation",
-											"value": "http://server/directory",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -6144,8 +7009,9 @@
 									"urlencoded": [
 										{
 											"key": "resourceLocation",
-											"value": "http://server/directory",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -6537,7 +7403,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those user profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those user profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -6556,53 +7425,93 @@
 									"urlencoded": [
 										{
 											"key": "cancreateCoSpaces",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "canCreateCalls",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "canUseExternalDevices",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "canMakePhoneCalls",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "userToUserMessagingAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "audioParticipationAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "videoParticipationAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "presentationParticipationAllowed",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "hasLicense",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "canRecieveCalls",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -6631,61 +7540,91 @@
 									"urlencoded": [
 										{
 											"key": "cancreateCoSpaces",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canCreateCalls",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canUseExternalDevices",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canMakePhoneCalls",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "userToUserMessagingAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "audioParticipationAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "videoParticipationAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "presentationParticipationAllowed",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "hasLicense",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "canReceiveCalls",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -6890,14 +7829,8 @@
 											"disabled": true
 										},
 										{
-											"key": "callBrandingProfile",
-											"value": "{{ivrBrandingProfileID}}",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "ivrBrandingProfile",
-											"value": "{{ivrBrandingProfileID}}",
+											"key": "callProfile",
+											"value": "{{callProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -6908,14 +7841,20 @@
 											"disabled": true
 										},
 										{
-											"key": "callProfile",
-											"value": "{{callProfileID}}",
+											"key": "userProfile",
+											"value": "{{userProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
-											"key": "userProfile",
-											"value": "{{userProfileID}}",
+											"key": "ivrBrandingProfile",
+											"value": "{{ivrBrandingProfileID}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "callBrandingProfile",
+											"value": "{{ivrBrandingProfileID}}",
 											"type": "text",
 											"disabled": true
 										},
@@ -7079,7 +8018,7 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://somewhere.com:8444",
+											"value": "URL",
 											"type": "text"
 										}
 									]
@@ -7123,7 +8062,7 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://somewhere.com:8444",
+											"value": "URL",
 											"type": "text"
 										}
 									]
@@ -7256,50 +8195,61 @@
 									"urlencoded": [
 										{
 											"key": "serverAddress",
-											"value": "192.168.75.76",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "clientAddress",
-											"value": "128.8.8.8",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "username",
-											"value": "username",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "password",
-											"value": "password",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "type",
-											"value": "acano",
-											"type": "text"
+											"value": [
+												"standard",
+												"acano",
+												"cms",
+												"expressway",
+												"lyncEdge"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tcpPortNumberOverride",
-											"value": "4999",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "numRegistrations",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -7330,55 +8280,61 @@
 									"urlencoded": [
 										{
 											"key": "serverAddress",
-											"value": "192.168.75.76",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "clientAddress",
-											"value": "128.8.8.8",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "username",
-											"value": "username",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "password",
-											"value": "password",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "type",
-											"value": "acano",
+											"value": [
+												"standard",
+												"acano",
+												"cms",
+												"expressway",
+												"lyncEdge"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tcpPortNumberOverride",
-											"value": "4999",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "numRegistrations",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -7541,58 +8497,85 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "http://serverAddress",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "resourceArchive",
-											"value": "http://server/directory/archive.zip",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": null,
-											"type": "text"
+											"value": "{{tenantID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tenantGroup",
-											"value": null,
-											"type": "text"
+											"value": "{{tenantGroupID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "idEntryMode",
-											"value": "secure",
-											"type": "text"
+											"value": [
+												"disabled",
+												"secure",
+												"legacy"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "allowWeblinkAccess",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "showSignIn",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "resolveCoSpaceCallIds",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "resolveLyncConferenceIds",
-											"value": "false",
-											"type": "text"
+											"value": [
+												"false",
+												"true"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeGroupID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeID}}",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -7621,67 +8604,83 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "http://serverAddress",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resourceArchive",
-											"value": "http://server/directory/archive.zip",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenant",
-											"value": null,
+											"value": "{{tenantID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "tenantGroup",
-											"value": null,
+											"value": "{{tenantGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "idEntryMode",
-											"value": "secure",
+											"value": [
+												"disabled",
+												"secure",
+												"legacy"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "allowWeblinkAccess",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "showSignIn",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveCoSpaceCallIds",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "resolveLyncConferenceIds",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -7859,23 +8858,26 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "address",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "sipDomain",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeGroupID}}",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -7904,23 +8906,26 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "address",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "sipDomain",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeGroupID}}",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -8050,35 +9055,50 @@
 										},
 										{
 											"key": "loadBalancingEnabled",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not Call Bridges in this Call Bridge group will attempt to load balance calls within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceLyncCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not incoming calls to coSpaces from Lync are load balanced within the Call Bridge Group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceOutgoingCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not calls from coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.2)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceUserCalls",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "Whether or not Cisco Meeting App calls to coSpaces should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “true” (from version 2.3)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceIndirectCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not incoming calls with Record-Route SIP headers should be load balanced within the group. If this parameter is not supplied in a create (POST) operation, it defaults to “false” (from version 2.4)",
 											"type": "text",
 											"disabled": true
@@ -8117,35 +9137,50 @@
 										},
 										{
 											"key": "loadBalancingEnabled",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not Call Bridges in this Call Bridge group will attempt to load balance calls within the group. (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceLyncCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not incoming calls to coSpaces from Lync are load balanced within the Call Bridge Group. (from version 2.1)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceOutgoingCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not calls from coSpaces should be load balanced within the group. (from version 2.2)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceUserCalls",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"description": "Whether or not Cisco Meeting App calls to coSpaces should be load balanced within the group. (from version 2.3)",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadBalanceIndirectCalls",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"description": "Whether or not incoming calls with Record-Route SIP headers should be load balanced within the group. (from version 2.4)",
 											"type": "text",
 											"disabled": true
@@ -8260,23 +9295,27 @@
 									"urlencoded": [
 										{
 											"key": "uniqueName",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "domain",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "sharedSecret",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "serverAddressOverride",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -8307,25 +9346,25 @@
 									"urlencoded": [
 										{
 											"key": "uniqueName",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "domain",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sharedSecret",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "serverAddressOverride",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -8390,36 +9429,37 @@
 									"urlencoded": [
 										{
 											"key": "uniqueName",
-											"value": "",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "peerLinkBitRate",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "newConferenceLoadLimitBasisPoints",
-											"value": "5000",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "newConferenceLoadLimitBasisPoints",
-											"value": "8000",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										}
@@ -8452,37 +9492,37 @@
 									"urlencoded": [
 										{
 											"key": "uniqueName",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "peerLinkBitRate",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "participantLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "loadLimit",
-											"value": "",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "newConferenceLoadLimitBasisPoints",
-											"value": "5000",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "newConferenceLoadLimitBasisPoints",
-											"value": "8000",
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										}
@@ -8558,18 +9598,19 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://server.company.com:8443",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -8600,19 +9641,19 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://server.company.com:8443",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -8763,18 +9804,21 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://server.company.com:8443",
-											"type": "text"
+											"value": "URL",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeID}}",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "CallBridgeGroup",
-											"value": "",
-											"type": "text"
+											"value": "{{callBridgeGroupID}}",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -8803,19 +9847,19 @@
 									"urlencoded": [
 										{
 											"key": "url",
-											"value": "https://server.company.com:8443",
+											"value": "URL",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "callBridge",
-											"value": "",
+											"value": "{{callBridgeID}}",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "CallBridgeGroup",
-											"value": "",
+											"value": "{{callBridgeGroupID}}",
 											"type": "text",
 											"disabled": true
 										}
@@ -8984,7 +10028,10 @@
 										},
 										{
 											"key": "usageFilter",
-											"value": "unreferenced|referenced",
+											"value": [
+												"unreferenced",
+												"referenced"
+											],
 											"description": "Supply “usageFilter=unreferenced” in the request to retrieve only those compatibility profiles that are not referenced by global settings or any other object. This is a useful check before deleting the profile. To retrieve just those compatibility profiles which are referenced in at least one place, you can supply “usageFilter=referenced“",
 											"disabled": true
 										}
@@ -9003,7 +10050,10 @@
 									"urlencoded": [
 										{
 											"key": "sipUdt",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -9034,7 +10084,10 @@
 									"urlencoded": [
 										{
 											"key": "sipUdt",
-											"value": "true",
+											"value": [
+												"true",
+												"false"
+											],
 											"type": "text",
 											"disabled": true
 										}
@@ -9254,33 +10307,42 @@
 									"urlencoded": [
 										{
 											"key": "address",
-											"value": "192.168.1.110",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "portNumber",
-											"value": "389",
+											"value": "Number",
 											"type": "text"
 										},
 										{
 											"key": "secure",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text"
 										},
 										{
 											"key": "username",
-											"value": "cn=administrator,cn=users,dc=demo,dc=company,dc=org",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "password",
-											"value": "SamplePass",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "usePagedResults",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -9309,33 +10371,42 @@
 									"urlencoded": [
 										{
 											"key": "address",
-											"value": "192.168.1.110",
+											"value": "String",
 											"type": "text"
 										},
 										{
 											"key": "portNumber",
-											"value": "389",
+											"value": "Number",
 											"type": "text"
 										},
 										{
 											"key": "secure",
-											"value": "false",
+											"value": [
+												"false",
+												"true"
+											],
 											"type": "text"
 										},
 										{
 											"key": "username",
-											"value": "cn=administrator,cn=users,dc=demo,dc=company,dc=org",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "password",
-											"value": "SamplePass",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "usePagedResults",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
@@ -9464,45 +10535,49 @@
 									"urlencoded": [
 										{
 											"key": "jidMapping",
-											"value": "$sAMAccountName$@demo.company.org",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "nameMapping",
-											"value": "$cn$",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "cdrTagMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceUriMapping",
-											"value": "$sAMAccountName$.space",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "coSpaceSecondaryUriMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceNameMapping",
-											"value": "$sAMAccountName$ Space",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "coSpaceCallIdMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "authenticationIdMapping",
-											"value": "$userPrincipalName$",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -9533,49 +10608,49 @@
 									"urlencoded": [
 										{
 											"key": "jidMapping",
-											"value": "$sAMAccountName$",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "nameMapping",
-											"value": "$cn$",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "cdrTagMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceUriMapping",
-											"value": "$mail|'/^([^@]*)@.*$/\\1/'$.space",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceSecondaryUriMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceNameMapping",
-											"value": "$sAMAccountName$ Space",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "coSpaceCallIdMapping",
-											"value": null,
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "authenticationIdMapping",
-											"value": "$userPrincipalName$",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -9728,12 +10803,14 @@
 										{
 											"key": "filter",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tenant",
 											"value": "{{tenantID}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "userProfile",
@@ -9769,20 +10846,17 @@
 										{
 											"key": "server",
 											"value": "{{ldapServerID}}",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "mapping",
 											"value": "{{ldapMappingID}}",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "baseDN",
 											"value": "String",
-											"type": "text",
-											"disabled": true
+											"type": "text"
 										},
 										{
 											"key": "filter",
@@ -9924,12 +10998,17 @@
 										{
 											"key": "ldapSource",
 											"value": "{{ldapSourceID}}",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "removeWhenFinished",
-											"value": "true",
-											"type": "text"
+											"value": [
+												"true",
+												"false"
+											],
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "tenant",
@@ -10075,43 +11154,50 @@
 										{
 											"key": "baseDn",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "filterFormat",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "label",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "priority",
 											"value": "Number",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "firstName",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "lastName",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "displayName",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "phone",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "mobile",
@@ -10176,7 +11262,8 @@
 										{
 											"key": "baseDn",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "filterFormat",
@@ -10187,54 +11274,60 @@
 										{
 											"key": "label",
 											"value": "String",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "priority",
 											"value": "Number",
-											"type": "text"
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "firstName",
-											"value": "$givenName$",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "lastName",
-											"value": "$sn$",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "displayName",
-											"value": "$displayName$",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "phone",
-											"value": "$telephoneNumber$",
-											"type": "text"
+											"value": "String",
+											"type": "text",
+											"disabled": true
 										},
 										{
 											"key": "mobile",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "email",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "sip",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										},
 										{
 											"key": "organization",
-											"value": "",
+											"value": "String",
 											"type": "text",
 											"disabled": true
 										}
@@ -10411,7 +11504,7 @@
 										},
 										{
 											"key": "participantLimit",
-											"value": null,
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
@@ -10489,7 +11582,7 @@
 										},
 										{
 											"key": "participantLimit",
-											"value": null,
+											"value": "Number",
 											"type": "text",
 											"disabled": true
 										},
@@ -10751,19 +11844,22 @@
 									"key": "uri",
 									"value": "Text",
 									"description": "The “user part” of the URI; that is, the part before any '@' character in a full URI",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "callId",
 									"value": "String",
 									"description": "A numeric ID (typically 9 digits long)",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "tenant",
 									"value": "{{tenantID}}",
 									"description": "If supplied, limits the search to the specific tenant",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -10802,7 +11898,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{mmpHost}}/api/v1/conversationIdQuery?conversationId=String",
+							"raw": "https://{{mmpHost}}/api/v1/conversationIdQuery?",
 							"protocol": "https",
 							"host": [
 								"{{mmpHost}}"
@@ -10815,7 +11911,8 @@
 							"query": [
 								{
 									"key": "conversationId",
-									"value": "String"
+									"value": "String",
+									"disabled": true
 								}
 							]
 						},
@@ -10835,13 +11932,15 @@
 									"key": "uri",
 									"value": "Text",
 									"description": "The “user part” of the URI; that is, the part before any '@' character in a full URI",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "tenant",
 									"value": "{{tenantID}}",
 									"description": "If supplied, limits the search to the specific tenant",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
