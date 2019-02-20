@@ -1,11 +1,13 @@
-v2.4.beta
+v2.5
 
 look for latest version on https://github.com/ciscocms/cms-postman-collection
 
 ## February, 2019
-* Major cleanup of attribute values
+* 209 requests (removed PUT BulkSyncRequests, as its invalid)
+* Major cleanup of attributes and attribute values
 * all optional attributes marked as "disabled" when imported into Postman
 * all attribute values should feature variable placeholders where applicable.
+* should be true to CMS Release 2.4 and later API Reference Guide, Jan 25, 2019 version
 
 ## January, 2019
 * Published on github
