@@ -74,5 +74,7 @@ This collection was originally created by Steve Kapinos for CMS 2.0
 
 Reorganized, cleaned up, expanded with more recent API changes, documented and published by Zoltán Kelemen. 
 
+Cleaned up, expanded with recent API changes, and published for v3.0 by Lisette Baer.
 
-© 2019 Cisco Systems, Inc. All rights reserved.
+
+© 2020 Cisco Systems, Inc. All rights reserved.
