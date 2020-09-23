@@ -1,6 +1,13 @@
-v2.5
+v3.0
 
 look for latest version on https://github.com/ciscocms/cms-postman-collection
+
+## September, 2020
+* Updated for all CMS API 3.0
+* Removal of deprecated methods and parameters
+* All method parameters checked and updated
+* Cleaned up the tree structure to more closely reflect the API guide structure. 
+* Made accurate to API Reference Guide, September 04 2020 version
 
 ## February, 2019
 * 209 requests (removed PUT BulkSyncRequests, as its invalid)
